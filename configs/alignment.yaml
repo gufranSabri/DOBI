@@ -1,0 +1,36 @@
+seed: 42
+OUTPUT_DIR       : "./space_aligned_model"
+ALIGNED_SAVE_DIR : "./aligned_small_model"
+
+SMALL_MODEL_ID   : "Qwen/Qwen3.5-0.8B"
+LARGE_MODEL_ID   : "Qwen/Qwen3.5-2B"
+DATASET_ID       : "HuggingFaceTB/smoltalk"
+# DATASET_SUBSET   : "all"
+DATASET_SUBSETS  :
+  - "self-oss-instruct"
+  - "metamathqa-50k"
+  - "numina-cot-100k"
+  - "openhermes-100k"
+  - "smol-magpie-ultra"
+
+MAX_LENGTH        : 512
+MAX_TOKENS        : 10000
+TRAIN_SPLIT_PCT   : 0.98
+MAX_TRAIN_SAMPLES : 50000
+MAX_VAL_SAMPLES   : 1000
+
+TEMPERATURE  : 2.0   # distillation temperature
+
+TRAIN_EPOCHS : 1
+LR           : 3e-4
+WARMUP_STEPS : 100
+PER_DEVICE_TRAIN_BATCH_SIZE : 4
+PER_DEVICE_EVAL_BATCH_SIZE  : 4
+GRADIENT_ACCUMULATION_STEPS : 4
+
+# losses
+INCLUDE_MSE    : true
+INCLUDE_COSINE : true
+INCLUDE_SCALE  : true
+INCLUDE_KLD    : true
+INCLUDE_CE     : true
