@@ -21,7 +21,7 @@ def linear_cka(X, Y) -> float:
 
     return float(num / (denom + 1e-10))
 
-def pca_plot(s_mat, t_mat, epoch, arg):
+def pca_plot(s_mat, t_mat, epoch, arg, phase):
     combined = np.vstack([s_mat, t_mat])
     pca      = PCA(n_components=2)
     pca.fit(combined)
@@ -39,13 +39,13 @@ def pca_plot(s_mat, t_mat, epoch, arg):
     ax.legend(markerscale=3)
     plt.tight_layout()
     
-    path = Path(arg.work_dir) / "viz" / f"flow_pca_epoch_{epoch:.2f}.png"
+    path = Path(arg.work_dir) / f"{phase}_viz" / f"flow_pca_epoch_{epoch:.2f}.png"
     plt.savefig(path, dpi=130)
     plt.close()
 
     arg.logger(f"  PCA plot saved → {path}\n")
 
-def umap_plot(s_mat, t_mat, epoch, arg):
+def umap_plot(s_mat, t_mat, epoch, arg, phase):
     combined    = np.vstack([s_mat, t_mat])
     reducer     = umap.UMAP(n_components=2, random_state=42, n_neighbors=15, min_dist=0.1)
     combined_2d = reducer.fit_transform(combined)
@@ -63,7 +63,7 @@ def umap_plot(s_mat, t_mat, epoch, arg):
     ax.legend(markerscale=3)
     plt.tight_layout()
 
-    path = Path(arg.work_dir) / "viz" / f"flow_umap_epoch_{epoch:.2f}.png"
+    path = Path(arg.work_dir) / f"{phase}_viz" / f"flow_umap_epoch_{epoch:.2f}.png"
     plt.savefig(path, dpi=130)
     plt.close()
 

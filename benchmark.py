@@ -9,18 +9,12 @@ from lm_eval.models.huggingface import HFLM
 
 TASKS = [
     "mmlu",
-    "mmlu_pro",
-    "gsm8k",
-    "mathqa",
-    "humaneval",
-    "mbpp",
+    # "mmlu_pro",
+    # "gsm8k",
+    # "mathqa",
+    # "humaneval",
+    # "mbpp",
 ]
-
-
-class FlowArgs:
-    DIT_MODEL_NAME = "t5-large"
-    flow_model_path = "work_dir/v2_flow"
-
 
 def format_results(task: str, results: dict) -> str:
     lines = []
@@ -47,14 +41,10 @@ def format_results(task: str, results: dict) -> str:
 def main(args):
     os.makedirs(args.work_dir, exist_ok=True)
 
-    flow_args = FlowArgs()
-    flow_args.flow_model_path = args.flow_model_path
-
     print(f"Loading model from {args.excited_model_path} …")
     model = HFLM(
         pretrained="Qwen/Qwen3.5-0.8B",
         excited_model_path=args.excited_model_path,
-        flow_model_args=flow_args,
     )
 
     all_results = {}
@@ -111,8 +101,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--work-dir",           default="work_dir/test")
-    parser.add_argument("--excited-model-path", dest="excited_model_path", default="work_dir/aligned_50k")
-    parser.add_argument("--flow-model-path",    dest="flow_model_path",    default="work_dir/flow")
+    parser.add_argument("--excited-model-path", dest="excited_model_path", default="work_dir/50k")
     args = parser.parse_args()
 
     main(args)

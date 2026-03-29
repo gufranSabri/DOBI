@@ -1,11 +1,8 @@
-import umap
-from pathlib import Path
+import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 from transformers import Trainer
 from utils.utils import save_hf_model, linear_cka, pca_plot, umap_plot
 
@@ -207,8 +204,8 @@ class AlignmentTrainer(Trainer):
         self.arg.logger("\n")
 
         # ── Plots ─────────────────────────────────────────────────────────
-        pca_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg)
-        umap_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg)
+        pca_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg, phase="alignment")
+        umap_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg, phase="alignment")
 
         # Log to trainer state
         metrics = {
@@ -226,8 +223,205 @@ class AlignmentTrainer(Trainer):
         if self.best_cos < avg_cos:
             self.best_cos = avg_cos
             self.arg.logger(f"New best cosine similarity: {avg_cos:.4f} at epoch {self.state.epoch:.1f} — saving model checkpoint ...")
-            save_hf_model(model, save_dir=f"{self.arg.work_dir}/best_model", base_model_name=self.SMALL_MODEL_ID)
+            save_hf_model(model, save_dir=f"{self.arg.work_dir}/aligned_best", base_model_name=self.SMALL_MODEL_ID)
 
         model.train()
         return metrics
 
+
+
+
+
+class FlowTrainer(Trainer):
+    def __init__(
+        self,
+        arg,
+        teacher_model,
+        student,
+        num_steps: int = 5,
+        *args,
+        **kwargs,
+    ):
+        super().__init__(*args, **kwargs)
+        self.teacher    = teacher_model
+        self.student    = student
+        self.num_steps  = num_steps
+        self.arg        = arg
+
+        self.LARGE_MODEL_ID = arg.LARGE_MODEL_ID
+        self.best_mean_l2   = 100
+
+        self.lambda_kld  = 0.5   # tune this
+        self.ce_loss_fn  = nn.CrossEntropyLoss(ignore_index=-100)
+
+    # ── training ──────────────────────────────────────────────────────────────
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        input_ids      = inputs["input_ids"]
+        attention_mask = inputs.get("attention_mask")
+        labels         = inputs.get("labels")
+
+        with torch.no_grad():
+            teacher_out = self.teacher(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                output_hidden_states=True,
+                return_dict=True,
+            )
+            t_hidden = teacher_out.hidden_states[-1].float()
+
+            t_logits = self.teacher.lm_head(
+                t_hidden.to(self.teacher.lm_head.weight.dtype)
+            ).float()
+
+            student_out = self.student(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                return_projected=True,
+            )
+            s_hidden = student_out["projected_hidden"].float()
+
+
+        B, T, D = s_hidden.shape
+
+        tau     = torch.rand(B, device=s_hidden.device)
+        tau_btt = tau.view(B, 1, 1).expand(B, T, 1)
+
+        x_tau    = (1.0 - tau_btt) * s_hidden + tau_btt * t_hidden
+        v_target = t_hidden - s_hidden
+        t_int    = (tau * 1000).long()
+
+        v_pred = model(
+            x_tau,
+            t=t_int,
+            attention_mask=attention_mask,
+        )
+
+        loss = F.mse_loss(v_pred, v_target)
+
+        if self.state.global_step % self.args.logging_steps == 0:
+            self.arg.logger(f"Step {self.state.global_step} — MSE: {loss.item():.4f}")
+
+        return (loss, v_pred) if return_outputs else loss
+
+    # ── Euler integration ─────────────────────────────────────────────────────
+    @torch.no_grad()
+    def _integrate(self, model, s_hidden, attention_mask=None):
+        """
+        Integrate the learned vector field from τ=0 (s_hidden) to τ=1 (≈ t_hidden).
+        Returns x_final of shape [B, T, D].
+        """
+        x = s_hidden.clone()
+        B, T, D = x.shape
+        delta_tau = 1.0 / self.num_steps
+        cond = {"projected_hidden": s_hidden}   # condition is always the source
+
+        for i in range(self.num_steps):
+            tau_val = i / self.num_steps          # current τ ∈ [0, 1)
+            t_int   = torch.full(
+                (B,), int(tau_val * 1000), dtype=torch.long, device=x.device
+            )
+            v = model(
+                x,
+                t=t_int,
+                attention_mask=attention_mask,
+            )
+            x = x + v * delta_tau
+
+        return x   # [B, T, D]
+
+    def evaluate(self, eval_dataset=None, ignore_keys=None, metric_key_prefix="eval"):
+        self.arg.logger(f"\n{'='*60}")
+        self.arg.logger(f"Running validation at epoch {self.state.epoch:.1f} …")
+        self.arg.logger(f"  Strategy: integrate small-proj → teacher space ({self.num_steps} Euler steps)")
+        self.arg.logger("=" * 60)
+ 
+        model = self.model
+        model.eval()
+        self.teacher.eval()
+        self.student.eval()
+        device = next(model.parameters()).device
+ 
+        all_x_hat, all_x_teacher = [], []
+        dataloader = self.get_eval_dataloader(eval_dataset or self.eval_dataset)
+ 
+        with torch.no_grad():
+            print(len(dataloader), "batches in eval dataloader")
+            for batch in dataloader:
+                batch          = {k: v.to(device) for k, v in batch.items()}
+                attention_mask = batch.get("attention_mask")
+ 
+                # teacher target
+                t_out = self.teacher(
+                    input_ids=batch["input_ids"],
+                    attention_mask=attention_mask,
+                    output_hidden_states=True,
+                    return_dict=True,
+                )
+                x_teacher = t_out.hidden_states[-1].float()   # [B, T, D]
+ 
+                # student source
+                s_out    = self.student(
+                    input_ids=batch["input_ids"],
+                    attention_mask=attention_mask,
+                    return_projected=True,
+                )
+                s_hidden = s_out["projected_hidden"].float()   # [B, T, D]
+
+                # integrate
+                x_hat = self._integrate(model, s_hidden, attention_mask)  # [B, T, D]
+ 
+                if len(all_x_teacher) < 2000:
+                    if attention_mask is not None:
+                        m = attention_mask.bool().cpu().numpy()
+                        all_x_hat.append(x_hat.cpu().numpy()[m])
+                        all_x_teacher.append(x_teacher.cpu().numpy()[m])
+                    else:
+                        Bv, Tv, Dv = x_hat.shape
+                        all_x_hat.append(x_hat.cpu().numpy().reshape(Bv * Tv, Dv))
+                        all_x_teacher.append(x_teacher.cpu().numpy().reshape(Bv * Tv, Dv))
+ 
+        s_mat = np.vstack(all_x_hat)       # flow-matched output
+        t_mat = np.vstack(all_x_teacher)   # true teacher hiddens
+ 
+        max_tokens = 5000
+        if len(s_mat) > max_tokens:
+            idx   = np.random.choice(len(s_mat), max_tokens, replace=False)
+            s_mat = s_mat[idx]
+            t_mat = t_mat[idx]
+ 
+        cos_sim = float(F.cosine_similarity(
+            torch.tensor(s_mat), torch.tensor(t_mat), dim=-1).mean())
+        mse     = float(F.mse_loss(torch.tensor(s_mat), torch.tensor(t_mat)))
+        cka     = linear_cka(s_mat, t_mat)
+        mean_l2 = float(np.linalg.norm(s_mat.mean(0) - t_mat.mean(0)))
+ 
+        self.arg.logger(f"Flow Metrics @ epoch {self.state.epoch:.1f}")
+        self.arg.logger(f"  Recon MSE vs teacher     : {mse:.6f}  (0.0 = perfect)")
+        self.arg.logger(f"  Mean L2 distance         : {mean_l2:.4f}  (0.0 = perfect)")
+        self.arg.logger(f"  Cosine sim vs teacher    : {cos_sim:.4f}  (1.0 = perfect)")
+        self.arg.logger(f"  Linear CKA vs teacher    : {cka:.4f}  (1.0 = perfect)")
+ 
+        pca_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg, phase="flow")
+        umap_plot(s_mat, t_mat, epoch=self.state.epoch, arg=self.arg, phase="flow")
+ 
+        metrics = {
+            f"{metric_key_prefix}_x0_mse":  mse,
+            f"{metric_key_prefix}_mean_l2": mean_l2,
+            f"{metric_key_prefix}_cos_sim": cos_sim,
+            f"{metric_key_prefix}_cka":     cka,
+        }
+        self.log(metrics)
+        self.control = self.callback_handler.on_evaluate(
+            self.args, self.state, self.control, metrics
+        )
+ 
+        if mean_l2 < self.best_mean_l2:
+            self.best_mean_l2 = mean_l2
+            self.arg.logger(f"New best Mean L2: {mean_l2:.4f} — saving FlowNet checkpoint ...\n")
+            torch.save(
+                model.state_dict(),
+                os.path.join(self.arg.work_dir, "best_flow.pt"),
+            )
+ 
+        model.train()
+        return metrics

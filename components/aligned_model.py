@@ -61,6 +61,9 @@ class AlignedModel(PreTrainedModel, GenerationMixin):
             LearnableScale(d_large),
         )
 
+    def set_flownet(self, flownet):
+        self.flownet = flownet
+
     def can_generate(self) -> bool:
         return True
 
@@ -81,6 +84,26 @@ class AlignedModel(PreTrainedModel, GenerationMixin):
             "past_key_values": past_key_values,
         }
 
+    def process_flow(self, projected, attention_mask=None):
+        B, T, D = projected.shape
+        x = projected.clone()
+        
+        num_steps = getattr(self, "num_flow_steps", 5)
+        delta_tau = 1.0 / num_steps
+
+        with torch.no_grad():
+            for i in range(num_steps):
+                tau_val = i / num_steps
+                t_int = torch.full(
+                    (B,), int(tau_val * 1000),
+                    dtype=torch.long,
+                    device=x.device,
+                )
+                v = self.flownet(x, t=t_int, attention_mask=attention_mask)
+                x = x + v * delta_tau
+
+        return x
+
     def forward(
         self,
         input_ids: torch.Tensor,
@@ -100,8 +123,13 @@ class AlignedModel(PreTrainedModel, GenerationMixin):
         )
 
         last_hidden = outputs.hidden_states[-1]  # [B, T, d_small]
+        last_hidden = last_hidden.to(self.projector[0].weight.dtype)  # cast to projector dtype if needed
         projected   = self.projector(last_hidden) # [B, T, d_large] — all float32 now, no casting needed
-        logits      = self.head(projected)        # [B, T, vocab]
+
+        if hasattr(self, "flownet"):
+            projected = self.process_flow(projected, attention_mask=attention_mask)
+
+        logits = self.head(projected)        # [B, T, vocab]
 
         loss = None
         if labels is not None:

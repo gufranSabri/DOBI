@@ -55,25 +55,47 @@ def build_datasets(args, tokenizer):
 
     args.logger("Loading smoltalk subsets …")
 
+    use_all_train = args.MAX_TRAIN_SAMPLES == -1
+
     train_shards, val_shards = [], []
-    total_needed = (args.MAX_TRAIN_SAMPLES + args.MAX_VAL_SAMPLES)
-    n_per_subset = total_needed // len(args.DATASET_SUBSETS)
-    n_val_per_subset = args.MAX_VAL_SAMPLES // len(args.DATASET_SUBSETS)
-    n_train_per_subset = n_per_subset - n_val_per_subset
+
+    if not use_all_train:
+        total_needed       = args.MAX_TRAIN_SAMPLES + args.MAX_VAL_SAMPLES
+        n_per_subset       = total_needed // len(args.DATASET_SUBSETS)
+        n_val_per_subset   = args.MAX_VAL_SAMPLES // len(args.DATASET_SUBSETS)
+        n_train_per_subset = n_per_subset - n_val_per_subset
+    else:
+        n_val_per_subset   = args.MAX_VAL_SAMPLES // len(args.DATASET_SUBSETS)
 
     for subset in args.DATASET_SUBSETS:
         train = load_dataset(args.DATASET_ID, subset, split="train")
         test  = load_dataset(args.DATASET_ID, subset, split="test")
 
-        train = train.shuffle(seed=42).select(range(min(n_train_per_subset, len(train))))
-        test  = test.shuffle(seed=42).select(range(min(n_val_per_subset,   len(test))))
+        if use_all_train:
+            train = train.shuffle(seed=42)
+        else:
+            train = train.shuffle(seed=42).select(range(min(n_train_per_subset, len(train))))
 
-        args.logger(f"  {subset}: {len(train)} train / {len(test)} val")
+        test = test.shuffle(seed=42).select(range(min(n_val_per_subset, len(test))))
+
+        under_budget = (
+            (not use_all_train and len(train) < n_train_per_subset) or
+            len(test) < n_val_per_subset
+        )
+
+        args.logger(f"  {subset}: {len(train)} train / {len(test)} val"
+                    + (" ⚠ subset smaller than target" if under_budget else ""))
+
         train_shards.append(train)
         val_shards.append(test)
 
     train_raw = concatenate_datasets(train_shards).shuffle(seed=42)
     val_raw   = concatenate_datasets(val_shards).shuffle(seed=42)
+
+    if not use_all_train and len(train_raw) > args.MAX_TRAIN_SAMPLES:
+        train_raw = train_raw.select(range(args.MAX_TRAIN_SAMPLES))
+    if len(val_raw) > args.MAX_VAL_SAMPLES:
+        val_raw = val_raw.select(range(args.MAX_VAL_SAMPLES))
 
     args.logger(f"  Total: {len(train_raw)} train / {len(val_raw)} val\n")
 
@@ -97,12 +119,16 @@ def build_datasets(args, tokenizer):
         batched=True,
         remove_columns=train_raw.column_names,
         desc="Tokenizing train",
+        load_from_cache_file=False,
+        keep_in_memory=True,
     )
     val_tokenized = val_raw.map(
         format_and_tokenize,
         batched=True,
         remove_columns=val_raw.column_names,
         desc="Tokenizing val",
+        load_from_cache_file=False,
+        keep_in_memory=True,
     )
 
     data_collator = DataCollatorForSeq2Seq(
@@ -114,7 +140,6 @@ def build_datasets(args, tokenizer):
     )
 
     return train_tokenized, val_tokenized, data_collator
-
 
 def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator, logger):
     total_steps = (len(train_ds) // (args.PER_DEVICE_TRAIN_BATCH_SIZE * args.GRADIENT_ACCUMULATION_STEPS)) * args.TRAIN_EPOCHS
@@ -154,8 +179,8 @@ def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator, logger
 
         load_best_model_at_end=False,
         metric_for_best_model="cka",
-
         greater_is_better=True,
+        
         fp16=(args.device == "cuda"),
         bf16=False,
 
@@ -183,14 +208,14 @@ def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator, logger
 
 def main(args):
     os.makedirs(args.work_dir, exist_ok=True)
-    os.makedirs(os.path.join(args.work_dir, "viz"), exist_ok=True)
+    os.makedirs(os.path.join(args.work_dir, "alignment_viz"), exist_ok=True)
 
     shutil.copy("alignment.py", os.path.join(args.work_dir, "alignment.py"))
     shutil.copy("configs/alignment.yaml", os.path.join(args.work_dir, "alignment.yaml"))
     shutil.copytree("components", os.path.join(args.work_dir, "components"), dirs_exist_ok=True)
 
     set_rng_state(args.seed)
-    setattr(args, "logger", Logger(os.path.join(args.work_dir, "train.log")))
+    setattr(args, "logger", Logger(os.path.join(args.work_dir, "alignment.log")))
 
     tokenizer, teacher, student = prep_model_comps(args)
     train_ds, val_ds, data_collator = build_datasets(args, tokenizer)

@@ -1,6 +1,3 @@
-# salloc --gpus-per-node=l40s:1 --cpus-per-task=6 --mem=60G --time=1-00:00:00 --account=aip-lsigal
-# salloc --gpus-per-node=l40s:4 --cpus-per-task=6 --mem=60G --time=3:00:00 --account=aip-lsigal
-# salloc --gpus-per-node=l40s:2 --cpus-per-task=6 --mem=60G --time=3:00:00 --account=aip-lsigal
 # salloc --gpus-per-node=l40s:1 --cpus-per-task=6 --mem=60G --time=12:00:00 --account=aip-lsigal
 # salloc --gpus-per-node=l40s:1 --cpus-per-task=6 --mem=60G --time=3:00:00 --account=aip-lsigal
 
