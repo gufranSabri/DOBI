@@ -1,0 +1,748 @@
+created virtual environment CPython3.11.5.final.0-64 in 1289ms
+  creator CPython3Posix(dest=/tmp/env, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/ahmedubc/.local/share/virtualenv)
+    added seed packages: pip==26.0.1, setuptools==80.9.0+computecanada, wheel==0.45.1+computecanada
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: pip in /tmp/env/lib/python3.11/site-packages (26.0.1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-26.0.1+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.0.1
+    Uninstalling pip-26.0.1:
+      Successfully uninstalled pip-26.0.1
+Successfully installed pip-26.0.1+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/torch-2.11.0+computecanada-cp311-cp311-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/filelock-3.25.2+computecanada-py3-none-any.whl (from torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typing_extensions-4.15.0+computecanada-py3-none-any.whl (from torch)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch) (80.9.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/sympy-1.14.0+computecanada-py3-none-any.whl (from torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/networkx-3.6.1+computecanada-py3-none-any.whl (from torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/jinja2-3.1.6+computecanada-py3-none-any.whl (from torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/fsspec-2026.3.0+computecanada-py3-none-any.whl (from torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/mpmath-1.3.0+computecanada-py3-none-any.whl (from sympy>=1.13.3->torch)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/markupsafe-3.0.3+computecanada-cp311-cp311-linux_x86_64.whl (from jinja2->torch)
+Installing collected packages: mpmath, typing-extensions, sympy, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+
+Successfully installed MarkupSafe-3.0.3+computecanada filelock-3.25.2+computecanada fsspec-2026.3.0+computecanada jinja2-3.1.6+computecanada mpmath-1.3.0+computecanada networkx-3.6.1+computecanada sympy-1.14.0+computecanada torch-2.11.0+computecanada typing-extensions-4.15.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting torchao
+  Using cached torchao-0.17.0-py3-none-any.whl.metadata (20 kB)
+Using cached torchao-0.17.0-py3-none-any.whl (1.2 MB)
+Installing collected packages: torchao
+Successfully installed torchao-0.17.0
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/torchvision-0.26.0+computecanada-cp311-cp311-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/numpy-2.4.2+computecanada-cp311-cp311-linux_x86_64.whl (from torchvision)
+Requirement already satisfied: torch==2.11.0 in /tmp/env/lib/python3.11/site-packages (from torchvision) (2.11.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/Pillow_SIMD-9.5.0.post2+computecanada-cp311-cp311-linux_x86_64.whl (from torchvision)
+Requirement already satisfied: filelock in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (3.25.2+computecanada)
+Requirement already satisfied: typing-extensions>=4.10.0 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (4.15.0+computecanada)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (3.6.1+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (3.1.6+computecanada)
+Requirement already satisfied: fsspec>=0.8.5 in /tmp/env/lib/python3.11/site-packages (from torch==2.11.0->torchvision) (2026.3.0+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch==2.11.0->torchvision) (1.3.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch==2.11.0->torchvision) (3.0.3+computecanada)
+Installing collected packages: pillow-simd, numpy, torchvision
+
+Successfully installed numpy-2.4.2+computecanada pillow-simd-9.5.0.post2+computecanada torchvision-0.26.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyyaml-6.0.3+computecanada-cp311-cp311-linux_x86_64.whl
+Installing collected packages: pyyaml
+Successfully installed pyyaml-6.0.3+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (2.4.2+computecanada)
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tqdm-4.67.3+computecanada-py3-none-any.whl
+Installing collected packages: tqdm
+Successfully installed tqdm-4.67.3+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting nltk
+  Using cached nltk-3.9.4-py3-none-any.whl.metadata (3.2 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/click-8.3.1+computecanada-py3-none-any.whl (from nltk)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.5.3+computecanada-py3-none-any.whl (from nltk)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/regex-2026.1.15+computecanada-cp311-cp311-linux_x86_64.whl (from nltk)
+Requirement already satisfied: tqdm in /tmp/env/lib/python3.11/site-packages (from nltk) (4.67.3+computecanada)
+Using cached nltk-3.9.4-py3-none-any.whl (1.6 MB)
+Installing collected packages: regex, joblib, click, nltk
+
+Successfully installed click-8.3.1+computecanada joblib-1.5.3+computecanada nltk-3.9.4 regex-2026.1.15+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/huggingface_hub-1.8.0+computecanada-py3-none-any.whl
+Requirement already satisfied: filelock>=3.10.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub[hf_xet]) (3.25.2+computecanada)
+Requirement already satisfied: fsspec>=2023.5.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub[hf_xet]) (2026.3.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/hf_xet-1.4.3+computecanada-cp37-abi3-linux_x86_64.whl (from huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/httpx-0.28.1+computecanada-py3-none-any.whl (from huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/packaging-26.0+computecanada-py3-none-any.whl (from huggingface_hub[hf_xet])
+Requirement already satisfied: pyyaml>=5.1 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub[hf_xet]) (6.0.3+computecanada)
+Requirement already satisfied: tqdm>=4.42.1 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub[hf_xet]) (4.67.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typer-0.24.1+computecanada-py3-none-any.whl (from huggingface_hub[hf_xet])
+Requirement already satisfied: typing-extensions>=4.1.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub[hf_xet]) (4.15.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/anyio-4.13.0+computecanada-py3-none-any.whl (from httpx<1,>=0.23.0->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/certifi-2026.2.25+computecanada-py3-none-any.whl (from httpx<1,>=0.23.0->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/httpcore-1.0.9+computecanada-py3-none-any.whl (from httpx<1,>=0.23.0->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/idna-3.11+computecanada-py3-none-any.whl (from httpx<1,>=0.23.0->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/h11-0.16.0+computecanada-py3-none-any.whl (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub[hf_xet])
+Requirement already satisfied: click>=8.2.1 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub[hf_xet]) (8.3.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/shellingham-1.5.4+computecanada-py2.py3-none-any.whl (from typer->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rich-14.3.3+computecanada-py3-none-any.whl (from typer->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/annotated_doc-0.0.4+computecanada-py3-none-any.whl (from typer->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/markdown_it_py-4.0.0+computecanada-py3-none-any.whl (from rich>=12.3.0->typer->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pygments-2.20.0+computecanada-py3-none-any.whl (from rich>=12.3.0->typer->huggingface_hub[hf_xet])
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/mdurl-0.1.2+computecanada-py3-none-any.whl (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface_hub[hf_xet])
+Installing collected packages: shellingham, pygments, packaging, mdurl, idna, hf-xet, h11, certifi, annotated-doc, markdown-it-py, httpcore, anyio, rich, httpx, typer, huggingface_hub
+
+Successfully installed annotated-doc-0.0.4+computecanada anyio-4.13.0+computecanada certifi-2026.2.25+computecanada h11-0.16.0+computecanada hf-xet-1.4.3+computecanada httpcore-1.0.9+computecanada httpx-0.28.1+computecanada huggingface_hub-1.8.0+computecanada idna-3.11+computecanada markdown-it-py-4.0.0+computecanada mdurl-0.1.2+computecanada packaging-26.0+computecanada pygments-2.20.0+computecanada rich-14.3.3+computecanada shellingham-1.5.4+computecanada typer-0.24.1+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: hf_xet in /tmp/env/lib/python3.11/site-packages (1.4.3+computecanada)
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/tiktoken-0.12.0+computecanada-cp311-cp311-linux_x86_64.whl
+Requirement already satisfied: regex>=2022.1.18 in /tmp/env/lib/python3.11/site-packages (from tiktoken) (2026.1.15+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/requests-2.33.1+computecanada-py3-none-any.whl (from tiktoken)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/charset_normalizer-3.4.6+computecanada-py3-none-any.whl (from requests>=2.26.0->tiktoken)
+Requirement already satisfied: idna<4,>=2.5 in /tmp/env/lib/python3.11/site-packages (from requests>=2.26.0->tiktoken) (3.11+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/urllib3-2.6.3+computecanada-py3-none-any.whl (from requests>=2.26.0->tiktoken)
+Requirement already satisfied: certifi>=2023.5.7 in /tmp/env/lib/python3.11/site-packages (from requests>=2.26.0->tiktoken) (2026.2.25+computecanada)
+Installing collected packages: urllib3, charset_normalizer, requests, tiktoken
+
+Successfully installed charset_normalizer-3.4.6+computecanada requests-2.33.1+computecanada tiktoken-0.12.0+computecanada urllib3-2.6.3+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting blobfile
+  Using cached blobfile-3.2.0-py3-none-any.whl.metadata (15 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pycryptodomex-3.19.0+computecanada-cp35-abi3-linux_x86_64.whl (from blobfile)
+Requirement already satisfied: urllib3>=2 in /tmp/env/lib/python3.11/site-packages (from blobfile) (2.6.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/lxml-6.0.2+computecanada-cp311-cp311-linux_x86_64.whl (from blobfile)
+Requirement already satisfied: filelock>=3.0 in /tmp/env/lib/python3.11/site-packages (from blobfile) (3.25.2+computecanada)
+Using cached blobfile-3.2.0-py3-none-any.whl (76 kB)
+Installing collected packages: pycryptodomex, lxml, blobfile
+
+Successfully installed blobfile-3.2.0 lxml-6.0.2+computecanada pycryptodomex-3.19.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/sentencepiece-0.2.0+computecanada-cp311-cp311-linux_x86_64.whl
+Installing collected packages: sentencepiece
+Successfully installed sentencepiece-0.2.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/triton-3.6.0+computecanada-cp311-cp311-linux_x86_64.whl
+Installing collected packages: triton
+Successfully installed triton-3.6.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: triton in /tmp/env/lib/python3.11/site-packages (3.6.0+computecanada)
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/einops-0.8.2+computecanada-py3-none-any.whl
+Installing collected packages: einops
+Successfully installed einops-0.8.2+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/seaborn-0.13.2+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy!=1.24.0,>=1.20 in /tmp/env/lib/python3.11/site-packages (from seaborn) (2.4.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/pandas-3.0.0+computecanada-cp311-cp311-linux_x86_64.whl (from seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/matplotlib-3.10.8+computecanada-cp311-cp311-linux_x86_64.whl (from seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/contourpy-1.3.3+computecanada-cp311-cp311-linux_x86_64.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cycler-0.12.1+computecanada-py3-none-any.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/fonttools-4.62.1+computecanada-cp311-cp311-linux_x86_64.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/kiwisolver-1.4.9+computecanada-cp311-cp311-linux_x86_64.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Requirement already satisfied: packaging>=20.0 in /tmp/env/lib/python3.11/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (26.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/pillow-12.1.0+computecanada-cp311-cp311-linux_x86_64.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyparsing-3.3.2+computecanada-py3-none-any.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/python_dateutil-2.9.0.post0+computecanada-py2.py3-none-any.whl (from matplotlib!=3.6.1,>=3.4->seaborn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/six-1.17.0+computecanada-py2.py3-none-any.whl (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.4->seaborn)
+Installing collected packages: six, pyparsing, pillow, kiwisolver, fonttools, cycler, contourpy, python-dateutil, pandas, matplotlib, seaborn
+
+Successfully installed contourpy-1.3.3+computecanada cycler-0.12.1+computecanada fonttools-4.62.1+computecanada kiwisolver-1.4.9+computecanada matplotlib-3.10.8+computecanada pandas-3.0.0+computecanada pillow-12.1.0+computecanada pyparsing-3.3.2+computecanada python-dateutil-2.9.0.post0+computecanada seaborn-0.13.2+computecanada six-1.17.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/torch_geometric-2.7.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/aiohttp-3.13.3+computecanada-cp311-cp311-linux_x86_64.whl (from torch-geometric)
+Requirement already satisfied: fsspec in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (2026.3.0+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (3.1.6+computecanada)
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (2.4.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/psutil-7.2.2+computecanada-cp36-abi3-linux_x86_64.whl (from torch-geometric)
+Requirement already satisfied: pyparsing in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (3.3.2+computecanada)
+Requirement already satisfied: requests in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (2.33.1+computecanada)
+Requirement already satisfied: tqdm in /tmp/env/lib/python3.11/site-packages (from torch-geometric) (4.67.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/xxhash-3.5.0+computecanada-cp311-cp311-linux_x86_64.whl (from torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/aiohappyeyeballs-2.6.1+computecanada-py3-none-any.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/aiosignal-1.4.0+computecanada-py3-none-any.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/attrs-26.1.0+computecanada-py3-none-any.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/frozenlist-1.8.0+computecanada-cp311-cp311-linux_x86_64.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/multidict-6.7.1+computecanada-cp311-cp311-linux_x86_64.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/propcache-0.4.1+computecanada-py3-none-any.whl (from aiohttp->torch-geometric)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/yarl-1.23.0+computecanada-cp311-cp311-linux_x86_64.whl (from aiohttp->torch-geometric)
+Requirement already satisfied: idna>=2.0 in /tmp/env/lib/python3.11/site-packages (from yarl<2.0,>=1.17.0->aiohttp->torch-geometric) (3.11+computecanada)
+Requirement already satisfied: typing-extensions>=4.2 in /tmp/env/lib/python3.11/site-packages (from aiosignal>=1.4.0->aiohttp->torch-geometric) (4.15.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch-geometric) (3.0.3+computecanada)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests->torch-geometric) (3.4.6+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests->torch-geometric) (2.6.3+computecanada)
+Requirement already satisfied: certifi>=2023.5.7 in /tmp/env/lib/python3.11/site-packages (from requests->torch-geometric) (2026.2.25+computecanada)
+Installing collected packages: xxhash, psutil, propcache, multidict, frozenlist, attrs, aiohappyeyeballs, yarl, aiosignal, aiohttp, torch-geometric
+
+Successfully installed aiohappyeyeballs-2.6.1+computecanada aiohttp-3.13.3+computecanada aiosignal-1.4.0+computecanada attrs-26.1.0+computecanada frozenlist-1.8.0+computecanada multidict-6.7.1+computecanada propcache-0.4.1+computecanada psutil-7.2.2+computecanada torch-geometric-2.7.0+computecanada xxhash-3.5.0+computecanada yarl-1.23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting googletrans==4.0.0-rc1
+  Using cached googletrans-4.0.0rc1-py3-none-any.whl
+Collecting httpx==0.13.3 (from googletrans==4.0.0-rc1)
+  Using cached httpx-0.13.3-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx==0.13.3->googletrans==4.0.0-rc1) (2026.2.25+computecanada)
+Collecting hstspreload (from httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached hstspreload-2025.1.1-py3-none-any.whl.metadata (2.1 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/sniffio-1.3.1+computecanada-py3-none-any.whl (from httpx==0.13.3->googletrans==4.0.0-rc1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/chardet-3.0.4+computecanada-py2.py3-none-any.whl (from httpx==0.13.3->googletrans==4.0.0-rc1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/idna-2.10+computecanada-py2.py3-none-any.whl (from httpx==0.13.3->googletrans==4.0.0-rc1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rfc3986-1.5.0+computecanada-py2.py3-none-any.whl (from httpx==0.13.3->googletrans==4.0.0-rc1)
+Collecting httpcore==0.9.* (from httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached httpcore-0.9.1-py3-none-any.whl.metadata (4.6 kB)
+Collecting h11<0.10,>=0.8 (from httpcore==0.9.*->httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached h11-0.9.0-py2.py3-none-any.whl.metadata (8.1 kB)
+Collecting h2==3.* (from httpcore==0.9.*->httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached h2-3.2.0-py2.py3-none-any.whl.metadata (32 kB)
+Collecting hyperframe<6,>=5.2.0 (from h2==3.*->httpcore==0.9.*->httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached hyperframe-5.2.0-py2.py3-none-any.whl.metadata (7.2 kB)
+Collecting hpack<4,>=3.0 (from h2==3.*->httpcore==0.9.*->httpx==0.13.3->googletrans==4.0.0-rc1)
+  Using cached hpack-3.0.0-py2.py3-none-any.whl.metadata (7.0 kB)
+Using cached httpx-0.13.3-py3-none-any.whl (55 kB)
+Using cached httpcore-0.9.1-py3-none-any.whl (42 kB)
+Using cached h11-0.9.0-py2.py3-none-any.whl (53 kB)
+Using cached h2-3.2.0-py2.py3-none-any.whl (65 kB)
+Using cached hpack-3.0.0-py2.py3-none-any.whl (38 kB)
+Using cached hyperframe-5.2.0-py2.py3-none-any.whl (12 kB)
+Using cached hstspreload-2025.1.1-py3-none-any.whl (1.3 MB)
+Installing collected packages: rfc3986, hyperframe, hpack, h11, chardet, sniffio, idna, hstspreload, h2, httpcore, httpx, googletrans
+  Attempting uninstall: h11
+    Found existing installation: h11 0.16.0+computecanada
+    Uninstalling h11-0.16.0+computecanada:
+      Successfully uninstalled h11-0.16.0+computecanada
+  Attempting uninstall: idna
+    Found existing installation: idna 3.11+computecanada
+    Uninstalling idna-3.11+computecanada:
+      Successfully uninstalled idna-3.11+computecanada
+  Attempting uninstall: httpcore
+    Found existing installation: httpcore 1.0.9+computecanada
+    Uninstalling httpcore-1.0.9+computecanada:
+      Successfully uninstalled httpcore-1.0.9+computecanada
+  Attempting uninstall: httpx
+    Found existing installation: httpx 0.28.1+computecanada
+    Uninstalling httpx-0.28.1+computecanada:
+      Successfully uninstalled httpx-0.28.1+computecanada
+
+Successfully installed chardet-3.0.4+computecanada googletrans-4.0.0rc1 h11-0.9.0 h2-3.2.0 hpack-3.0.0 hstspreload-2025.1.1 httpcore-0.9.1 httpx-0.13.3 hyperframe-5.2.0 idna-2.10+computecanada rfc3986-1.5.0+computecanada sniffio-1.3.1+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting deep-translator
+  Using cached deep_translator-1.11.4-py3-none-any.whl.metadata (30 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/beautifulsoup4-4.14.3+computecanada-py3-none-any.whl (from deep-translator)
+Requirement already satisfied: requests<3.0.0,>=2.23.0 in /tmp/env/lib/python3.11/site-packages (from deep-translator) (2.33.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/soupsieve-2.8.3+computecanada-py3-none-any.whl (from beautifulsoup4<5.0.0,>=4.9.1->deep-translator)
+Requirement already satisfied: typing-extensions>=4.0.0 in /tmp/env/lib/python3.11/site-packages (from beautifulsoup4<5.0.0,>=4.9.1->deep-translator) (4.15.0+computecanada)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests<3.0.0,>=2.23.0->deep-translator) (3.4.6+computecanada)
+Requirement already satisfied: idna<4,>=2.5 in /tmp/env/lib/python3.11/site-packages (from requests<3.0.0,>=2.23.0->deep-translator) (2.10+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests<3.0.0,>=2.23.0->deep-translator) (2.6.3+computecanada)
+Requirement already satisfied: certifi>=2023.5.7 in /tmp/env/lib/python3.11/site-packages (from requests<3.0.0,>=2.23.0->deep-translator) (2026.2.25+computecanada)
+Using cached deep_translator-1.11.4-py3-none-any.whl (42 kB)
+Installing collected packages: soupsieve, beautifulsoup4, deep-translator
+
+Successfully installed beautifulsoup4-4.14.3+computecanada deep-translator-1.11.4 soupsieve-2.8.3+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting rouge_chinese
+  Using cached rouge_chinese-1.0.3-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: six in /tmp/env/lib/python3.11/site-packages (from rouge_chinese) (1.17.0+computecanada)
+Using cached rouge_chinese-1.0.3-py3-none-any.whl (21 kB)
+Installing collected packages: rouge_chinese
+Successfully installed rouge_chinese-1.0.3
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/rouge_score-0.1.2+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/absl_py-2.4.0+computecanada-py3-none-any.whl (from rouge_score)
+Requirement already satisfied: nltk in /tmp/env/lib/python3.11/site-packages (from rouge_score) (3.9.4)
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (from rouge_score) (2.4.2+computecanada)
+Requirement already satisfied: six>=1.14.0 in /tmp/env/lib/python3.11/site-packages (from rouge_score) (1.17.0+computecanada)
+Requirement already satisfied: click in /tmp/env/lib/python3.11/site-packages (from nltk->rouge_score) (8.3.1+computecanada)
+Requirement already satisfied: joblib in /tmp/env/lib/python3.11/site-packages (from nltk->rouge_score) (1.5.3+computecanada)
+Requirement already satisfied: regex>=2021.8.3 in /tmp/env/lib/python3.11/site-packages (from nltk->rouge_score) (2026.1.15+computecanada)
+Requirement already satisfied: tqdm in /tmp/env/lib/python3.11/site-packages (from nltk->rouge_score) (4.67.3+computecanada)
+Installing collected packages: absl-py, rouge_score
+
+Successfully installed absl-py-2.4.0+computecanada rouge_score-0.1.2+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/sacrebleu-2.6.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/portalocker-3.2.0+computecanada-py3-none-any.whl (from sacrebleu)
+Requirement already satisfied: regex in /tmp/env/lib/python3.11/site-packages (from sacrebleu) (2026.1.15+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tabulate-0.10.0+computecanada-py3-none-any.whl (from sacrebleu)
+Requirement already satisfied: numpy>=1.17 in /tmp/env/lib/python3.11/site-packages (from sacrebleu) (2.4.2+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/colorama-0.4.6+computecanada-py2.py3-none-any.whl (from sacrebleu)
+Requirement already satisfied: lxml in /tmp/env/lib/python3.11/site-packages (from sacrebleu) (6.0.2+computecanada)
+Installing collected packages: tabulate, portalocker, colorama, sacrebleu
+
+Successfully installed colorama-0.4.6+computecanada portalocker-3.2.0+computecanada sacrebleu-2.6.0+computecanada tabulate-0.10.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/tensorflow-2.19.1+computecanada-cp311-cp311-linux_x86_64.whl
+Requirement already satisfied: absl-py>=1.0.0 in /tmp/env/lib/python3.11/site-packages (from tensorflow) (2.4.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/astunparse-1.6.3+computecanada-py2.py3-none-any.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/flatbuffers-25.12.19+computecanada-py2.py3-none-any.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/gast-0.7.0+computecanada-py3-none-any.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/google_pasta-0.2.0+computecanada-py3-none-any.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/libclang-14.0.1+computecanada-py2.py3-none-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/opt_einsum-3.4.0+computecanada-py3-none-any.whl (from tensorflow)
+Requirement already satisfied: packaging in /tmp/env/lib/python3.11/site-packages (from tensorflow) (26.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/protobuf-5.29.6+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Requirement already satisfied: requests<3,>=2.21.0 in /tmp/env/lib/python3.11/site-packages (from tensorflow) (2.33.1+computecanada)
+Requirement already satisfied: setuptools in /tmp/env/lib/python3.11/site-packages (from tensorflow) (80.9.0+computecanada)
+Requirement already satisfied: six>=1.12.0 in /tmp/env/lib/python3.11/site-packages (from tensorflow) (1.17.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/termcolor-3.3.0+computecanada-py3-none-any.whl (from tensorflow)
+Requirement already satisfied: typing-extensions>=3.6.6 in /tmp/env/lib/python3.11/site-packages (from tensorflow) (4.15.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/wrapt-2.1.2+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/grpcio-1.76.0+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard-2.19.0+computecanada-py3-none-any.whl (from tensorflow)
+Collecting keras>=3.5.0 (from tensorflow)
+  Using cached keras-3.13.2-py3-none-any.whl.metadata (6.3 kB)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/numpy-2.1.1+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/h5py-3.15.0+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/ml_dtypes-0.5.4+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorflow_io_gcs_filesystem-0.32.0+computecanada-cp311-cp311-linux_x86_64.whl (from tensorflow)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests<3,>=2.21.0->tensorflow) (3.4.6+computecanada)
+Requirement already satisfied: idna<4,>=2.5 in /tmp/env/lib/python3.11/site-packages (from requests<3,>=2.21.0->tensorflow) (2.10+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests<3,>=2.21.0->tensorflow) (2.6.3+computecanada)
+Requirement already satisfied: certifi>=2023.5.7 in /tmp/env/lib/python3.11/site-packages (from requests<3,>=2.21.0->tensorflow) (2026.2.25+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/markdown-3.10.2+computecanada-py3-none-any.whl (from tensorboard~=2.19.0->tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tensorboard_data_server-0.7.2+computecanada-py3-none-linux_x86_64.whl (from tensorboard~=2.19.0->tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/werkzeug-3.1.7+computecanada-py3-none-any.whl (from tensorboard~=2.19.0->tensorflow)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /tmp/env/lib/python3.11/site-packages (from astunparse>=1.6.0->tensorflow) (0.45.1+computecanada)
+Requirement already satisfied: rich in /tmp/env/lib/python3.11/site-packages (from keras>=3.5.0->tensorflow) (14.3.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/namex-0.1.0+computecanada-py3-none-any.whl (from keras>=3.5.0->tensorflow)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/optree-0.18.0+computecanada-cp311-cp311-linux_x86_64.whl (from keras>=3.5.0->tensorflow)
+Requirement already satisfied: markupsafe>=2.1.1 in /tmp/env/lib/python3.11/site-packages (from werkzeug>=1.0.1->tensorboard~=2.19.0->tensorflow) (3.0.3+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich->keras>=3.5.0->tensorflow) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich->keras>=3.5.0->tensorflow) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich->keras>=3.5.0->tensorflow) (0.1.2+computecanada)
+Using cached keras-3.13.2-py3-none-any.whl (1.5 MB)
+Installing collected packages: namex, libclang, flatbuffers, wrapt, werkzeug, termcolor, tensorflow-io-gcs-filesystem, tensorboard-data-server, protobuf, optree, opt-einsum, numpy, markdown, grpcio, google-pasta, gast, astunparse, tensorboard, ml-dtypes, h5py, keras, tensorflow
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.4.2+computecanada
+    Uninstalling numpy-2.4.2+computecanada:
+      Successfully uninstalled numpy-2.4.2+computecanada
+
+Successfully installed astunparse-1.6.3+computecanada flatbuffers-25.12.19+computecanada gast-0.7.0+computecanada google-pasta-0.2.0+computecanada grpcio-1.76.0+computecanada h5py-3.15.0+computecanada keras-3.13.2 libclang-14.0.1+computecanada markdown-3.10.2+computecanada ml-dtypes-0.5.4+computecanada namex-0.1.0+computecanada numpy-2.1.1+computecanada opt-einsum-3.4.0+computecanada optree-0.18.0+computecanada protobuf-5.29.6+computecanada tensorboard-2.19.0+computecanada tensorboard-data-server-0.7.2+computecanada tensorflow-2.19.1+computecanada tensorflow-io-gcs-filesystem-0.32.0+computecanada termcolor-3.3.0+computecanada werkzeug-3.1.7+computecanada wrapt-2.1.2+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting timm
+  Using cached timm-1.0.26-py3-none-any.whl.metadata (39 kB)
+Requirement already satisfied: torch in /tmp/env/lib/python3.11/site-packages (from timm) (2.11.0+computecanada)
+Requirement already satisfied: torchvision in /tmp/env/lib/python3.11/site-packages (from timm) (0.26.0+computecanada)
+Requirement already satisfied: pyyaml in /tmp/env/lib/python3.11/site-packages (from timm) (6.0.3+computecanada)
+Requirement already satisfied: huggingface_hub in /tmp/env/lib/python3.11/site-packages (from timm) (1.8.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/safetensors-0.7.0+computecanada-cp38-abi3-linux_x86_64.whl (from timm)
+Requirement already satisfied: filelock>=3.10.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (3.25.2+computecanada)
+Requirement already satisfied: fsspec>=2023.5.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (2026.3.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (1.4.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/httpx-0.28.1+computecanada-py3-none-any.whl (from huggingface_hub->timm)
+Requirement already satisfied: packaging>=20.9 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (26.0+computecanada)
+Requirement already satisfied: tqdm>=4.42.1 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (4.67.3+computecanada)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (0.24.1+computecanada)
+Requirement already satisfied: typing-extensions>=4.1.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub->timm) (4.15.0+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub->timm) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub->timm) (2026.2.25+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/httpcore-1.0.9+computecanada-py3-none-any.whl (from httpx<1,>=0.23.0->huggingface_hub->timm)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub->timm) (2.10+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/h11-0.16.0+computecanada-py3-none-any.whl (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub->timm)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch->timm) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch->timm) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch->timm) (3.6.1+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch->timm) (3.1.6+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch->timm) (1.3.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch->timm) (3.0.3+computecanada)
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (from torchvision->timm) (2.1.1+computecanada)
+Requirement already satisfied: pillow-simd!=8.3.*,>=5.3.0 in /tmp/env/lib/python3.11/site-packages (from torchvision->timm) (9.5.0.post2+computecanada)
+Requirement already satisfied: click>=8.2.1 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub->timm) (8.3.1+computecanada)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub->timm) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub->timm) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub->timm) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub->timm) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub->timm) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface_hub->timm) (0.1.2+computecanada)
+Using cached timm-1.0.26-py3-none-any.whl (2.6 MB)
+Installing collected packages: safetensors, h11, httpcore, httpx, timm
+  Attempting uninstall: h11
+    Found existing installation: h11 0.9.0
+    Uninstalling h11-0.9.0:
+      Successfully uninstalled h11-0.9.0
+  Attempting uninstall: httpcore
+    Found existing installation: httpcore 0.9.1
+    Uninstalling httpcore-0.9.1:
+      Successfully uninstalled httpcore-0.9.1
+  Attempting uninstall: httpx
+    Found existing installation: httpx 0.13.3
+    Uninstalling httpx-0.13.3:
+      Successfully uninstalled httpx-0.13.3
+
+Successfully installed h11-0.16.0+computecanada httpcore-1.0.9+computecanada httpx-0.28.1+computecanada safetensors-0.7.0+computecanada timm-1.0.26
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/umap_learn-0.5.11+computecanada-py3-none-any.whl
+Requirement already satisfied: numpy>=1.23 in /tmp/env/lib/python3.11/site-packages (from umap-learn) (2.1.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/scipy-1.17.0+computecanada-cp311-cp311-linux_x86_64.whl (from umap-learn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/scikit_learn-1.8.0+computecanada-cp311-cp311-linux_x86_64.whl (from umap-learn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/numba-0.64.0+computecanada-cp311-cp311-linux_x86_64.whl (from umap-learn)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pynndescent-0.6.0+computecanada-py3-none-any.whl (from umap-learn)
+Requirement already satisfied: tqdm in /tmp/env/lib/python3.11/site-packages (from umap-learn) (4.67.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/llvmlite-0.46.0+computecanada-cp311-cp311-linux_x86_64.whl (from numba>=0.51.2->umap-learn)
+Requirement already satisfied: joblib>=0.11 in /tmp/env/lib/python3.11/site-packages (from pynndescent>=0.5->umap-learn) (1.5.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.6.0+computecanada-py3-none-any.whl (from scikit-learn>=1.6->umap-learn)
+Installing collected packages: threadpoolctl, scipy, llvmlite, scikit-learn, numba, pynndescent, umap-learn
+
+Successfully installed llvmlite-0.46.0+computecanada numba-0.64.0+computecanada pynndescent-0.6.0+computecanada scikit-learn-1.8.0+computecanada scipy-1.17.0+computecanada threadpoolctl-3.6.0+computecanada umap-learn-0.5.11+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting ema-pytorch
+  Using cached ema_pytorch-0.7.9-py3-none-any.whl.metadata (897 bytes)
+Requirement already satisfied: torch>=2.0 in /tmp/env/lib/python3.11/site-packages (from ema-pytorch) (2.11.0+computecanada)
+Requirement already satisfied: filelock in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (3.25.2+computecanada)
+Requirement already satisfied: typing-extensions>=4.10.0 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (4.15.0+computecanada)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (3.6.1+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (3.1.6+computecanada)
+Requirement already satisfied: fsspec>=0.8.5 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0->ema-pytorch) (2026.3.0+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=2.0->ema-pytorch) (1.3.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch>=2.0->ema-pytorch) (3.0.3+computecanada)
+Using cached ema_pytorch-0.7.9-py3-none-any.whl (11 kB)
+Installing collected packages: ema-pytorch
+Successfully installed ema-pytorch-0.7.9
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting git+https://github.com/huggingface/transformers.git
+  Cloning https://github.com/huggingface/transformers.git to /tmp/pip-req-build-3m5m_0zj
+  Resolved https://github.com/huggingface/transformers.git to commit f38d6639fa6b82a401f4e2ea7fef1a3eb550c1a6
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: huggingface-hub<2.0,>=1.5.0 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (1.8.0+computecanada)
+Requirement already satisfied: numpy>=1.17 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (2.1.1+computecanada)
+Requirement already satisfied: packaging>=20.0 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (26.0+computecanada)
+Requirement already satisfied: pyyaml>=5.1 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (6.0.3+computecanada)
+Requirement already satisfied: regex>=2025.10.22 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (2026.1.15+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/tokenizers-0.22.2+computecanada-cp39-abi3-linux_x86_64.whl (from transformers==5.5.0.dev0)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (0.24.1+computecanada)
+Requirement already satisfied: safetensors>=0.4.3 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (0.7.0+computecanada)
+Requirement already satisfied: tqdm>=4.27 in /tmp/env/lib/python3.11/site-packages (from transformers==5.5.0.dev0) (4.67.3+computecanada)
+Requirement already satisfied: filelock>=3.10.0 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (3.25.2+computecanada)
+Requirement already satisfied: fsspec>=2023.5.0 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (2026.3.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (1.4.3+computecanada)
+Requirement already satisfied: httpx<1,>=0.23.0 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (0.28.1+computecanada)
+Requirement already satisfied: typing-extensions>=4.1.0 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (4.15.0+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (2026.2.25+computecanada)
+Requirement already satisfied: httpcore==1.* in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (1.0.9+computecanada)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (2.10+computecanada)
+Requirement already satisfied: h11>=0.16 in /tmp/env/lib/python3.11/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers==5.5.0.dev0) (0.16.0+computecanada)
+Requirement already satisfied: click>=8.2.1 in /tmp/env/lib/python3.11/site-packages (from typer->transformers==5.5.0.dev0) (8.3.1+computecanada)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->transformers==5.5.0.dev0) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->transformers==5.5.0.dev0) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->transformers==5.5.0.dev0) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->transformers==5.5.0.dev0) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->transformers==5.5.0.dev0) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->transformers==5.5.0.dev0) (0.1.2+computecanada)
+Building wheels for collected packages: transformers
+  Building wheel for transformers (pyproject.toml): started
+  Building wheel for transformers (pyproject.toml): finished with status 'done'
+  Created wheel for transformers: filename=transformers-5.5.0.dev0-py3-none-any.whl size=11264223 sha256=e8121fc4c0bc678e568722090d0f209feb048f4d4179f6d436b7974b752f6dec
+  Stored in directory: /tmp/pip-ephem-wheel-cache-jr516rms/wheels/32/4b/78/f195c684dd3a9ed21f3b39fe8f85b48df7918581b6437be143
+Successfully built transformers
+Installing collected packages: tokenizers, transformers
+
+Successfully installed tokenizers-0.22.2+computecanada transformers-5.5.0.dev0
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Collecting git+https://github.com/huggingface/peft.git
+  Cloning https://github.com/huggingface/peft.git to /tmp/pip-req-build-4u_5fty2
+  Resolved https://github.com/huggingface/peft.git to commit 52efb763debb87b741fc040662f783a30bbc2d43
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy>=1.17 in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (2.1.1+computecanada)
+Requirement already satisfied: packaging>=20.0 in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (26.0+computecanada)
+Requirement already satisfied: psutil in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (7.2.2+computecanada)
+Requirement already satisfied: pyyaml in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (6.0.3+computecanada)
+Requirement already satisfied: torch>=1.13.0 in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (2.11.0+computecanada)
+Requirement already satisfied: transformers in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (5.5.0.dev0)
+Requirement already satisfied: tqdm in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (4.67.3+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/accelerate-1.13.0+computecanada-py3-none-any.whl (from peft==0.18.2.dev0)
+Requirement already satisfied: safetensors in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (0.7.0+computecanada)
+Requirement already satisfied: huggingface_hub>=0.25.0 in /tmp/env/lib/python3.11/site-packages (from peft==0.18.2.dev0) (1.8.0+computecanada)
+Requirement already satisfied: filelock>=3.10.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (3.25.2+computecanada)
+Requirement already satisfied: fsspec>=2023.5.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (2026.3.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (1.4.3+computecanada)
+Requirement already satisfied: httpx<1,>=0.23.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (0.28.1+computecanada)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (0.24.1+computecanada)
+Requirement already satisfied: typing-extensions>=4.1.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.25.0->peft==0.18.2.dev0) (4.15.0+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (2026.2.25+computecanada)
+Requirement already satisfied: httpcore==1.* in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (1.0.9+computecanada)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (2.10+computecanada)
+Requirement already satisfied: h11>=0.16 in /tmp/env/lib/python3.11/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (0.16.0+computecanada)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.18.2.dev0) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.18.2.dev0) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.18.2.dev0) (3.6.1+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch>=1.13.0->peft==0.18.2.dev0) (3.1.6+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=1.13.0->peft==0.18.2.dev0) (1.3.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch>=1.13.0->peft==0.18.2.dev0) (3.0.3+computecanada)
+Requirement already satisfied: regex>=2025.10.22 in /tmp/env/lib/python3.11/site-packages (from transformers->peft==0.18.2.dev0) (2026.1.15+computecanada)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in /tmp/env/lib/python3.11/site-packages (from transformers->peft==0.18.2.dev0) (0.22.2+computecanada)
+Requirement already satisfied: click>=8.2.1 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (8.3.1+computecanada)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface_hub>=0.25.0->peft==0.18.2.dev0) (0.1.2+computecanada)
+Building wheels for collected packages: peft
+  Building wheel for peft (pyproject.toml): started
+  Building wheel for peft (pyproject.toml): finished with status 'done'
+  Created wheel for peft: filename=peft-0.18.2.dev0-py3-none-any.whl size=658458 sha256=9e8a8dd88412f4800ff814599135e1ca0bd6b8b55813262d48137cc1be72adaf
+  Stored in directory: /tmp/pip-ephem-wheel-cache-82jdxapz/wheels/42/ec/c4/eb24dac74be83ba2ed4817037a784d1c775e317cb8de69963f
+Successfully built peft
+Installing collected packages: accelerate, peft
+
+Successfully installed accelerate-1.13.0+computecanada peft-0.18.2.dev0
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/trl-0.20.0+computecanada-py3-none-any.whl
+Requirement already satisfied: accelerate>=1.4.0 in /tmp/env/lib/python3.11/site-packages (from trl==0.20.0) (1.13.0+computecanada)
+Collecting datasets>=3.0.0 (from trl==0.20.0)
+  Using cached datasets-4.8.4-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: transformers>=4.53.2 in /tmp/env/lib/python3.11/site-packages (from trl==0.20.0) (5.5.0.dev0)
+Requirement already satisfied: numpy>=1.17 in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (2.1.1+computecanada)
+Requirement already satisfied: packaging>=20.0 in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (26.0+computecanada)
+Requirement already satisfied: psutil in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (7.2.2+computecanada)
+Requirement already satisfied: pyyaml in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (6.0.3+computecanada)
+Requirement already satisfied: torch>=2.0.0 in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (2.11.0+computecanada)
+Requirement already satisfied: huggingface_hub>=0.21.0 in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (1.8.0+computecanada)
+Requirement already satisfied: safetensors>=0.4.3 in /tmp/env/lib/python3.11/site-packages (from accelerate>=1.4.0->trl==0.20.0) (0.7.0+computecanada)
+Requirement already satisfied: filelock in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (3.25.2+computecanada)
+Requirement already satisfied: pyarrow>=21.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Compiler/gcccore/arrow/23.0.1/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (23.0.1)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/dill-0.4.1+computecanada-py3-none-any.whl (from datasets>=3.0.0->trl==0.20.0)
+Requirement already satisfied: pandas in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (3.0.0+computecanada)
+Requirement already satisfied: requests>=2.32.2 in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (2.33.1+computecanada)
+Requirement already satisfied: httpx<1.0.0 in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (0.28.1+computecanada)
+Requirement already satisfied: tqdm>=4.66.3 in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (4.67.3+computecanada)
+Requirement already satisfied: xxhash in /tmp/env/lib/python3.11/site-packages (from datasets>=3.0.0->trl==0.20.0) (3.5.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/multiprocess-0.70.19+computecanada-py3-none-any.whl (from datasets>=3.0.0->trl==0.20.0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/fsspec-2026.2.0+computecanada-py3-none-any.whl (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0)
+Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /tmp/env/lib/python3.11/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (3.13.3+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=3.0.0->trl==0.20.0) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=3.0.0->trl==0.20.0) (2026.2.25+computecanada)
+Requirement already satisfied: httpcore==1.* in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=3.0.0->trl==0.20.0) (1.0.9+computecanada)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=3.0.0->trl==0.20.0) (2.10+computecanada)
+Requirement already satisfied: h11>=0.16 in /tmp/env/lib/python3.11/site-packages (from httpcore==1.*->httpx<1.0.0->datasets>=3.0.0->trl==0.20.0) (0.16.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (1.4.3+computecanada)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (0.24.1+computecanada)
+Requirement already satisfied: typing-extensions>=4.1.0 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (4.15.0+computecanada)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (2.6.1+computecanada)
+Requirement already satisfied: aiosignal>=1.4.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (1.4.0+computecanada)
+Requirement already satisfied: attrs>=17.3.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (26.1.0+computecanada)
+Requirement already satisfied: frozenlist>=1.1.1 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (1.8.0+computecanada)
+Requirement already satisfied: multidict<7.0,>=4.5 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (6.7.1+computecanada)
+Requirement already satisfied: propcache>=0.2.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (0.4.1+computecanada)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=3.0.0->trl==0.20.0) (1.23.0+computecanada)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=3.0.0->trl==0.20.0) (3.4.6+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=3.0.0->trl==0.20.0) (2.6.3+computecanada)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (3.6.1+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (3.1.6+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (1.3.0+computecanada)
+Requirement already satisfied: regex>=2025.10.22 in /tmp/env/lib/python3.11/site-packages (from transformers>=4.53.2->trl==0.20.0) (2026.1.15+computecanada)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in /tmp/env/lib/python3.11/site-packages (from transformers>=4.53.2->trl==0.20.0) (0.22.2+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->torch>=2.0.0->accelerate>=1.4.0->trl==0.20.0) (3.0.3+computecanada)
+Requirement already satisfied: python-dateutil>=2.8.2 in /tmp/env/lib/python3.11/site-packages (from pandas->datasets>=3.0.0->trl==0.20.0) (2.9.0.post0+computecanada)
+Requirement already satisfied: six>=1.5 in /tmp/env/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas->datasets>=3.0.0->trl==0.20.0) (1.17.0+computecanada)
+Requirement already satisfied: click>=8.2.1 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (8.3.1+computecanada)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=1.4.0->trl==0.20.0) (0.1.2+computecanada)
+Using cached datasets-4.8.4-py3-none-any.whl (526 kB)
+Installing collected packages: fsspec, dill, multiprocess, datasets, trl
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2026.3.0+computecanada
+    Uninstalling fsspec-2026.3.0+computecanada:
+      Successfully uninstalled fsspec-2026.3.0+computecanada
+
+Successfully installed datasets-4.8.4 dill-0.4.1+computecanada fsspec-2026.2.0+computecanada multiprocess-0.70.19+computecanada trl-0.20.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Obtaining file:///project/6101771/ahmedubc/F2L/lm-evaluation-harness
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: datasets>=2.16.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (4.8.4)
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (2.1.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/evaluate-0.4.6+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (3.1.6+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/jsonlines-4.0.0+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytablewriter-1.2.1+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Requirement already satisfied: rouge-score>=0.0.4 in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (0.1.2+computecanada)
+Requirement already satisfied: sacrebleu>=1.5.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (2.6.0+computecanada)
+Requirement already satisfied: scikit-learn>=0.24.1 in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (1.8.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/sqlitedict-2.1.0+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/zstandard-0.25.0+computecanada-cp311-cp311-linux_x86_64.whl (from lm_eval==0.4.12.dev0)
+Requirement already satisfied: dill in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (0.4.1+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/word2number-1.1+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/more_itertools-10.8.0+computecanada-py3-none-any.whl (from lm_eval==0.4.12.dev0)
+Requirement already satisfied: typing_extensions in /tmp/env/lib/python3.11/site-packages (from lm_eval==0.4.12.dev0) (4.15.0+computecanada)
+Requirement already satisfied: filelock in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (3.25.2+computecanada)
+Requirement already satisfied: pyarrow>=21.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Compiler/gcccore/arrow/23.0.1/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (23.0.1)
+Requirement already satisfied: pandas in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (3.0.0+computecanada)
+Requirement already satisfied: requests>=2.32.2 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.33.1+computecanada)
+Requirement already satisfied: httpx<1.0.0 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.28.1+computecanada)
+Requirement already satisfied: tqdm>=4.66.3 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (4.67.3+computecanada)
+Requirement already satisfied: xxhash in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (3.5.0+computecanada)
+Requirement already satisfied: multiprocess<0.70.20 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.70.19+computecanada)
+Requirement already satisfied: fsspec<=2026.2.0,>=2023.1.0 in /tmp/env/lib/python3.11/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2026.2.0+computecanada)
+Requirement already satisfied: huggingface-hub<2.0,>=0.25.0 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.8.0+computecanada)
+Requirement already satisfied: packaging in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (26.0+computecanada)
+Requirement already satisfied: pyyaml>=5.1 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval==0.4.12.dev0) (6.0.3+computecanada)
+Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /tmp/env/lib/python3.11/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (3.13.3+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2026.2.25+computecanada)
+Requirement already satisfied: httpcore==1.* in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.0.9+computecanada)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.10+computecanada)
+Requirement already satisfied: h11>=0.16 in /tmp/env/lib/python3.11/site-packages (from httpcore==1.*->httpx<1.0.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.16.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.4.3+computecanada)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.24.1+computecanada)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.6.1+computecanada)
+Requirement already satisfied: aiosignal>=1.4.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.4.0+computecanada)
+Requirement already satisfied: attrs>=17.3.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (26.1.0+computecanada)
+Requirement already satisfied: frozenlist>=1.1.1 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.8.0+computecanada)
+Requirement already satisfied: multidict<7.0,>=4.5 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (6.7.1+computecanada)
+Requirement already satisfied: propcache>=0.2.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.4.1+computecanada)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.23.0+computecanada)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=2.16.0->lm_eval==0.4.12.dev0) (3.4.6+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.6.3+computecanada)
+Requirement already satisfied: absl-py in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval==0.4.12.dev0) (2.4.0+computecanada)
+Requirement already satisfied: nltk in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval==0.4.12.dev0) (3.9.4)
+Requirement already satisfied: six>=1.14.0 in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval==0.4.12.dev0) (1.17.0+computecanada)
+Requirement already satisfied: portalocker in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval==0.4.12.dev0) (3.2.0+computecanada)
+Requirement already satisfied: regex in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval==0.4.12.dev0) (2026.1.15+computecanada)
+Requirement already satisfied: tabulate>=0.8.9 in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval==0.4.12.dev0) (0.10.0+computecanada)
+Requirement already satisfied: colorama in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval==0.4.12.dev0) (0.4.6+computecanada)
+Requirement already satisfied: lxml in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval==0.4.12.dev0) (6.0.2+computecanada)
+Requirement already satisfied: scipy>=1.10.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval==0.4.12.dev0) (1.17.0+computecanada)
+Requirement already satisfied: joblib>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval==0.4.12.dev0) (1.5.3+computecanada)
+Requirement already satisfied: threadpoolctl>=3.2.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval==0.4.12.dev0) (3.6.0+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->lm_eval==0.4.12.dev0) (3.0.3+computecanada)
+Requirement already satisfied: click in /tmp/env/lib/python3.11/site-packages (from nltk->rouge-score>=0.0.4->lm_eval==0.4.12.dev0) (8.3.1+computecanada)
+Requirement already satisfied: python-dateutil>=2.8.2 in /tmp/env/lib/python3.11/site-packages (from pandas->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.9.0.post0+computecanada)
+Requirement already satisfied: setuptools>=38.3.0 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval==0.4.12.dev0) (80.9.0+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/DataProperty-1.1.0+computecanada-py3-none-any.whl (from pytablewriter->lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/mbstrdecoder-1.1.4+computecanada-py3-none-any.whl (from pytablewriter->lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pathvalidate-3.3.1+computecanada-py3-none-any.whl (from pytablewriter->lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tabledata-1.3.4+computecanada-py3-none-any.whl (from pytablewriter->lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tcolorpy-0.1.7+computecanada-py3-none-any.whl (from pytablewriter->lm_eval==0.4.12.dev0)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typepy-1.3.4+computecanada-py3-none-any.whl (from typepy[datetime]<2,>=1.3.2->pytablewriter->lm_eval==0.4.12.dev0)
+Requirement already satisfied: chardet<6,>=3.0.4 in /tmp/env/lib/python3.11/site-packages (from mbstrdecoder<2,>=1.0.0->pytablewriter->lm_eval==0.4.12.dev0) (3.0.4+computecanada)
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytz-2026.1.post1+computecanada-py2.py3-none-any.whl (from typepy[datetime]<2,>=1.3.2->pytablewriter->lm_eval==0.4.12.dev0)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface-hub<2.0,>=0.25.0->datasets>=2.16.0->lm_eval==0.4.12.dev0) (0.1.2+computecanada)
+Building wheels for collected packages: lm_eval
+  Building editable for lm_eval (pyproject.toml): started
+  Building editable for lm_eval (pyproject.toml): finished with status 'done'
+  Created wheel for lm_eval: filename=lm_eval-0.4.12.dev0-0.editable-py3-none-any.whl size=29128 sha256=dc7738970e5af1bd0cc074c7b1aa41718e98ce3bcc6f63b3bbf7119eca6e0398
+  Stored in directory: /tmp/pip-ephem-wheel-cache-6xjimvuk/wheels/85/16/a8/d51f31e7effe3e51ae30980c61c34efb57208b3ee425326c33
+Successfully built lm_eval
+Installing collected packages: word2number, sqlitedict, pytz, zstandard, tcolorpy, pathvalidate, more_itertools, mbstrdecoder, jsonlines, typepy, DataProperty, tabledata, pytablewriter, evaluate, lm_eval
+
+Successfully installed DataProperty-1.1.0+computecanada evaluate-0.4.6+computecanada jsonlines-4.0.0+computecanada lm_eval-0.4.12.dev0 mbstrdecoder-1.1.4+computecanada more_itertools-10.8.0+computecanada pathvalidate-3.3.1+computecanada pytablewriter-1.2.1+computecanada pytz-2026.1.post1+computecanada sqlitedict-2.1.0+computecanada tabledata-1.3.4+computecanada tcolorpy-0.1.7+computecanada typepy-1.3.4+computecanada word2number-1.1+computecanada zstandard-0.25.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Requirement already satisfied: lm_eval[hf] in /tmp/env/lib/python3.11/site-packages (0.4.12.dev0)
+Requirement already satisfied: datasets>=2.16.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (4.8.4)
+Requirement already satisfied: numpy in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (2.1.1+computecanada)
+Requirement already satisfied: evaluate>=0.4.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (0.4.6+computecanada)
+Requirement already satisfied: jinja2 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (3.1.6+computecanada)
+Requirement already satisfied: jsonlines in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (4.0.0+computecanada)
+Requirement already satisfied: pytablewriter in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (1.2.1+computecanada)
+Requirement already satisfied: rouge-score>=0.0.4 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (0.1.2+computecanada)
+Requirement already satisfied: sacrebleu>=1.5.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (2.6.0+computecanada)
+Requirement already satisfied: scikit-learn>=0.24.1 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (1.8.0+computecanada)
+Requirement already satisfied: sqlitedict in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (2.1.0+computecanada)
+Requirement already satisfied: zstandard in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (0.25.0+computecanada)
+Requirement already satisfied: dill in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (0.4.1+computecanada)
+Requirement already satisfied: word2number in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (1.1+computecanada)
+Requirement already satisfied: more_itertools in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (10.8.0+computecanada)
+Requirement already satisfied: typing_extensions in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (4.15.0+computecanada)
+Requirement already satisfied: transformers>=4.1 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (5.5.0.dev0)
+Requirement already satisfied: torch>=1.8 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (2.11.0+computecanada)
+Requirement already satisfied: accelerate>=0.26.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (1.13.0+computecanada)
+Requirement already satisfied: peft>=0.2.0 in /tmp/env/lib/python3.11/site-packages (from lm_eval[hf]) (0.18.2.dev0)
+Requirement already satisfied: packaging>=20.0 in /tmp/env/lib/python3.11/site-packages (from accelerate>=0.26.0->lm_eval[hf]) (26.0+computecanada)
+Requirement already satisfied: psutil in /tmp/env/lib/python3.11/site-packages (from accelerate>=0.26.0->lm_eval[hf]) (7.2.2+computecanada)
+Requirement already satisfied: pyyaml in /tmp/env/lib/python3.11/site-packages (from accelerate>=0.26.0->lm_eval[hf]) (6.0.3+computecanada)
+Requirement already satisfied: huggingface_hub>=0.21.0 in /tmp/env/lib/python3.11/site-packages (from accelerate>=0.26.0->lm_eval[hf]) (1.8.0+computecanada)
+Requirement already satisfied: safetensors>=0.4.3 in /tmp/env/lib/python3.11/site-packages (from accelerate>=0.26.0->lm_eval[hf]) (0.7.0+computecanada)
+Requirement already satisfied: filelock in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (3.25.2+computecanada)
+Requirement already satisfied: pyarrow>=21.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Compiler/gcccore/arrow/23.0.1/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (23.0.1)
+Requirement already satisfied: pandas in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (3.0.0+computecanada)
+Requirement already satisfied: requests>=2.32.2 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (2.33.1+computecanada)
+Requirement already satisfied: httpx<1.0.0 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (0.28.1+computecanada)
+Requirement already satisfied: tqdm>=4.66.3 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (4.67.3+computecanada)
+Requirement already satisfied: xxhash in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (3.5.0+computecanada)
+Requirement already satisfied: multiprocess<0.70.20 in /tmp/env/lib/python3.11/site-packages (from datasets>=2.16.0->lm_eval[hf]) (0.70.19+computecanada)
+Requirement already satisfied: fsspec<=2026.2.0,>=2023.1.0 in /tmp/env/lib/python3.11/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (2026.2.0+computecanada)
+Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /tmp/env/lib/python3.11/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (3.13.3+computecanada)
+Requirement already satisfied: anyio in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval[hf]) (4.13.0+computecanada)
+Requirement already satisfied: certifi in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval[hf]) (2026.2.25+computecanada)
+Requirement already satisfied: httpcore==1.* in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval[hf]) (1.0.9+computecanada)
+Requirement already satisfied: idna in /tmp/env/lib/python3.11/site-packages (from httpx<1.0.0->datasets>=2.16.0->lm_eval[hf]) (2.10+computecanada)
+Requirement already satisfied: h11>=0.16 in /tmp/env/lib/python3.11/site-packages (from httpcore==1.*->httpx<1.0.0->datasets>=2.16.0->lm_eval[hf]) (0.16.0+computecanada)
+Requirement already satisfied: hf-xet<2.0.0,>=1.4.2 in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (1.4.3+computecanada)
+Requirement already satisfied: typer in /tmp/env/lib/python3.11/site-packages (from huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (0.24.1+computecanada)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (2.6.1+computecanada)
+Requirement already satisfied: aiosignal>=1.4.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (1.4.0+computecanada)
+Requirement already satisfied: attrs>=17.3.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (26.1.0+computecanada)
+Requirement already satisfied: frozenlist>=1.1.1 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (1.8.0+computecanada)
+Requirement already satisfied: multidict<7.0,>=4.5 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (6.7.1+computecanada)
+Requirement already satisfied: propcache>=0.2.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (0.4.1+computecanada)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /tmp/env/lib/python3.11/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=2.16.0->lm_eval[hf]) (1.23.0+computecanada)
+Requirement already satisfied: charset_normalizer<4,>=2 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=2.16.0->lm_eval[hf]) (3.4.6+computecanada)
+Requirement already satisfied: urllib3<3,>=1.26 in /tmp/env/lib/python3.11/site-packages (from requests>=2.32.2->datasets>=2.16.0->lm_eval[hf]) (2.6.3+computecanada)
+Requirement already satisfied: absl-py in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval[hf]) (2.4.0+computecanada)
+Requirement already satisfied: nltk in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval[hf]) (3.9.4)
+Requirement already satisfied: six>=1.14.0 in /tmp/env/lib/python3.11/site-packages (from rouge-score>=0.0.4->lm_eval[hf]) (1.17.0+computecanada)
+Requirement already satisfied: portalocker in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval[hf]) (3.2.0+computecanada)
+Requirement already satisfied: regex in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval[hf]) (2026.1.15+computecanada)
+Requirement already satisfied: tabulate>=0.8.9 in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval[hf]) (0.10.0+computecanada)
+Requirement already satisfied: colorama in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval[hf]) (0.4.6+computecanada)
+Requirement already satisfied: lxml in /tmp/env/lib/python3.11/site-packages (from sacrebleu>=1.5.0->lm_eval[hf]) (6.0.2+computecanada)
+Requirement already satisfied: scipy>=1.10.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval[hf]) (1.17.0+computecanada)
+Requirement already satisfied: joblib>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval[hf]) (1.5.3+computecanada)
+Requirement already satisfied: threadpoolctl>=3.2.0 in /tmp/env/lib/python3.11/site-packages (from scikit-learn>=0.24.1->lm_eval[hf]) (3.6.0+computecanada)
+Requirement already satisfied: setuptools<82 in /tmp/env/lib/python3.11/site-packages (from torch>=1.8->lm_eval[hf]) (80.9.0+computecanada)
+Requirement already satisfied: sympy>=1.13.3 in /tmp/env/lib/python3.11/site-packages (from torch>=1.8->lm_eval[hf]) (1.14.0+computecanada)
+Requirement already satisfied: networkx>=2.5.1 in /tmp/env/lib/python3.11/site-packages (from torch>=1.8->lm_eval[hf]) (3.6.1+computecanada)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=1.8->lm_eval[hf]) (1.3.0+computecanada)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in /tmp/env/lib/python3.11/site-packages (from transformers>=4.1->lm_eval[hf]) (0.22.2+computecanada)
+Requirement already satisfied: MarkupSafe>=2.0 in /tmp/env/lib/python3.11/site-packages (from jinja2->lm_eval[hf]) (3.0.3+computecanada)
+Requirement already satisfied: click in /tmp/env/lib/python3.11/site-packages (from nltk->rouge-score>=0.0.4->lm_eval[hf]) (8.3.1+computecanada)
+Requirement already satisfied: python-dateutil>=2.8.2 in /tmp/env/lib/python3.11/site-packages (from pandas->datasets>=2.16.0->lm_eval[hf]) (2.9.0.post0+computecanada)
+Requirement already satisfied: DataProperty<2,>=1.1.0 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval[hf]) (1.1.0+computecanada)
+Requirement already satisfied: mbstrdecoder<2,>=1.0.0 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval[hf]) (1.1.4+computecanada)
+Requirement already satisfied: pathvalidate<4,>=2.3.0 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval[hf]) (3.3.1+computecanada)
+Requirement already satisfied: tabledata<2,>=1.3.1 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval[hf]) (1.3.4+computecanada)
+Requirement already satisfied: tcolorpy<1,>=0.0.5 in /tmp/env/lib/python3.11/site-packages (from pytablewriter->lm_eval[hf]) (0.1.7+computecanada)
+Requirement already satisfied: typepy<2,>=1.3.2 in /tmp/env/lib/python3.11/site-packages (from typepy[datetime]<2,>=1.3.2->pytablewriter->lm_eval[hf]) (1.3.4+computecanada)
+Requirement already satisfied: chardet<6,>=3.0.4 in /tmp/env/lib/python3.11/site-packages (from mbstrdecoder<2,>=1.0.0->pytablewriter->lm_eval[hf]) (3.0.4+computecanada)
+Requirement already satisfied: pytz>=2018.9 in /tmp/env/lib/python3.11/site-packages (from typepy[datetime]<2,>=1.3.2->pytablewriter->lm_eval[hf]) (2026.1.post1+computecanada)
+Requirement already satisfied: shellingham>=1.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (1.5.4+computecanada)
+Requirement already satisfied: rich>=12.3.0 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (14.3.3+computecanada)
+Requirement already satisfied: annotated-doc>=0.0.2 in /tmp/env/lib/python3.11/site-packages (from typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (0.0.4+computecanada)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (4.0.0+computecanada)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /tmp/env/lib/python3.11/site-packages (from rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (2.20.0+computecanada)
+Requirement already satisfied: mdurl~=0.1 in /tmp/env/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=12.3.0->typer->huggingface_hub>=0.21.0->accelerate>=0.26.0->lm_eval[hf]) (0.1.2+computecanada)
+Using device: cuda

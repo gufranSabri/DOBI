@@ -7,7 +7,7 @@
 #SBATCH --mail-user=g202302610@kfupm.edu.sa
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
-#SBATCH --gpus-per-node=h100:1
+#SBATCH --gpus-per-node=l40s:1
 #SBATCH --cpus-per-task=6
 #SBATCH --mem=60G
 #SBATCH --time=1-00:00:00
@@ -19,8 +19,8 @@ pip install --no-index --upgrade pip
 bash ./scripts/install.sh
 
 timestamp=$(date +"%d_%H_%M_%S")
-work_dir="./work_dir/200k__${timestamp}"
+work_dir="./work_dir/0.8_100k__${timestamp}"
 
 export PYTHONDONTWRITEBYTECODE=1
 export HF_HUB_DISABLE_XET=1
-python alignment.py --work-dir "$work_dir" --slurm-mode
+python train.py --work-dir "$work_dir" --slurm-mode

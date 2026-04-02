@@ -43,7 +43,7 @@ def main(args):
 
     print(f"Loading model from {args.excited_model_path} …")
     model = HFLM(
-        pretrained="Qwen/Qwen3.5-0.8B",
+        pretrained=args.model,
         excited_model_path=args.excited_model_path,
     )
 
@@ -100,8 +100,10 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--work-dir",           default="work_dir/test")
-    parser.add_argument("--excited-model-path", dest="excited_model_path", default="work_dir/50k")
+    parser.add_argument("--work-dir", default="work_dir/test")
+    parser.add_argument("--model", default="Qwen/Qwen3.5-0.8B")
+    parser.add_argument("--excited-model-path", dest="excited_model_path")
     args = parser.parse_args()
+
 
     main(args)

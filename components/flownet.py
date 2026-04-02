@@ -53,6 +53,15 @@ class FlowBlock(nn.Module):
         )
         self.drop_self = nn.Dropout(dropout)
 
+        self.adaLN_cross = AdaLN(d_model, cond_dim)
+        self.cross_attn = nn.MultiheadAttention(
+            embed_dim=d_model,
+            num_heads=num_heads,
+            dropout=dropout,
+            batch_first=True,
+        )
+        self.drop_cross = nn.Dropout(dropout)
+
         self.adaLN_ffn = AdaLN(d_model, cond_dim)
         dim_ffn = int(d_model * mlp_ratio)
         self.ffn = nn.Sequential(
@@ -63,10 +72,16 @@ class FlowBlock(nn.Module):
         )
         self.drop_ffn = nn.Dropout(dropout)
 
-    def forward(self, x, t_emb, self_attn_mask,):
+    def forward(self, x, t_emb, self_attn_mask, context=None):
         h      = self.adaLN_self(x, t_emb)
+        
         sa, _  = self.self_attn(h, h, h, key_padding_mask=self_attn_mask)
         x      = x + self.drop_self(sa)
+
+        if context is not None:
+            h      = self.adaLN_cross(x, t_emb)
+            ca, _  = self.cross_attn(h, context, context)
+            x      = x + self.drop_cross(ca)
 
         h      = self.adaLN_ffn(x, t_emb)
         x      = x + self.drop_ffn(self.ffn(h))
@@ -131,7 +146,7 @@ class FlowNet(nn.Module):
             nn.init.zeros_(self.output_proj.weight)
             nn.init.zeros_(self.output_proj.bias)
 
-    def forward(self, x_tau, t, attention_mask):
+    def forward(self, x_tau, t, attention_mask, context=None):
         x   = x_tau.float()
 
         kpm = None
@@ -139,10 +154,11 @@ class FlowNet(nn.Module):
             kpm = (attention_mask == 0)  # [B, T]
 
         x   = self.input_proj(x)    # [B, T, d_model]
+        context = self.src_proj(context) if context is not None else None  # [B, T, d_model]
         t_emb = self.timestep_emb(t)  # [B, d_model]
 
         for block in self.blocks:
-            x = block(x, t_emb, self_attn_mask=kpm)
+            x = block(x, t_emb, self_attn_mask=kpm, context=context)
 
         x = self.norm_out(x)
         v = self.output_proj(x)      # [B, T, D]
