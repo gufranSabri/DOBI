@@ -1,0 +1,38 @@
+seed: 42
+
+# ── Models ────────────────────────────────────────────────────────────────────
+SMALL_MODEL_ID   : "Qwen/Qwen2.5-1.5B-Instruct"
+LARGE_MODEL_ID   : "Qwen/Qwen2.5-3B-Instruct"
+
+# ── Dataset ────────────────────────────────────────────────────────────────────
+DATASET_ID: "HuggingFaceTB/smoltalk"
+DATASET_SUBSETS  :
+  - "self-oss-instruct"
+  - "metamathqa-50k"
+  - "numina-cot-100k"
+  - "openhermes-100k"
+  - "smol-magpie-ultra"
+MAX_TRAIN_SAMPLES: 20000
+MAX_VAL_SAMPLES: 5000
+MAX_LENGTH: 2048
+RAW_TEXT_FRACTION: 0.2
+
+# ── Training ───────────────────────────────────────────────────────────────────
+TRAIN_EPOCHS: 1
+PER_DEVICE_TRAIN_BATCH_SIZE : 1
+PER_DEVICE_EVAL_BATCH_SIZE  : 1
+GRADIENT_ACCUMULATION_STEPS : 32
+LR: 3e-4
+
+# Loss = W_FLOW · MSE(predicted velocity, target velocity)  +  W_KL · KL_LOSS(teacher‖pred)
+# (both scored on the true response span). KL_LOSS is chosen at the CLI (--kl-loss);
+# this value is the default used when the flag is omitted.
+KL_LOSS: forward_kl
+W_FLOW : 1.0
+W_KL   : 1.0
+
+# ── Flow matching (FlowNet) ──────────────────────────────────────────────────────
+FLOWNET_D_MODEL: 512
+FLOWNET_LAYERS: 4
+FLOWNET_HEADS: 8
+NUM_FLOW_STEPS: 10   # Euler integration steps for inference (generate/eval)

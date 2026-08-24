@@ -1,0 +1,46 @@
+seed: 42
+
+# ── Models ────────────────────────────────────────────────────────────────────
+SMALL_MODEL_ID   : "Qwen/Qwen2.5-1.5B-Instruct"
+LARGE_MODEL_ID   : "Qwen/Qwen2.5-3B-Instruct"
+
+# ── Dataset ────────────────────────────────────────────────────────────────────
+DATASET_ID: "HuggingFaceTB/smoltalk"
+DATASET_SUBSETS  :
+  - "self-oss-instruct"
+  - "metamathqa-50k"
+  - "numina-cot-100k"
+  - "openhermes-100k"
+  - "smol-magpie-ultra"
+MAX_TRAIN_SAMPLES: 20000
+MAX_VAL_SAMPLES: 5000
+MAX_LENGTH: 2048
+# Fraction of examples rendered as plain text (no chat template) so the denoiser also
+# sees completion-style prompts like the ones lm-eval benchmarks send.
+RAW_TEXT_FRACTION: 0.2
+
+# ── Training ───────────────────────────────────────────────────────────────────
+TRAIN_EPOCHS: 1
+PER_DEVICE_TRAIN_BATCH_SIZE : 1
+PER_DEVICE_EVAL_BATCH_SIZE  : 1
+GRADIENT_ACCUMULATION_STEPS : 32
+LR: 1e-4
+
+# Loss = W_DIFF · maskedCE(teacher tokens AT masked slots)  +  W_KL · KL_LOSS(teacher‖pred)
+# (both scored on the same masked canvas positions). W_PROBE trains an independent
+# calibration-only MLP (diagnostic; does not touch the UNet) alongside — not one of
+# the two primary losses. KL_LOSS is chosen at the CLI (--kl-loss); this value is the
+# default used when the flag is omitted.
+KL_LOSS: forward_kl
+W_DIFF : 1.0
+W_KL   : 1.0
+W_PROBE: 1.0
+
+# ── Diffusion (mask-token) UNet ─────────────────────────────────────────────────
+D_MODEL: 768                       # base UNet channel width (== UNET_CHANNELS[0])
+UNET_LENGTHS  : [2048, 1024, 512]  # per-stage lengths (2 down/up samplings)
+UNET_CHANNELS : [768, 1152, 1536]  # per-stage channel widths
+N_HEADS: 4                         # attention heads per stage (widths must divide by this)
+NUM_SAMPLING_STEPS: 20             # K confidence-unmasking steps for generate() (5..20)
+MASK_SCHEDULE: cosine              # noising + unmasking schedule
+TIE_OUTPUT_HEAD: true              # tie the UNet output head to the frozen student embedding
