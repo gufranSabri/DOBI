@@ -7,7 +7,7 @@
 #SBATCH --mail-user=g202302610@kfupm.edu.sa
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
-#SBATCH --gpus-per-node=l40s:1
+#SBATCH --gpus-per-node=h100:1
 #SBATCH --cpus-per-task=24
 #SBATCH --mem=200G
 #SBATCH --time=1-00:00:00
@@ -38,4 +38,4 @@ export HF_HUB_DISABLE_XET=1
 
 NGPU=$(echo "$SLURM_GPUS_PER_NODE" | sed 's/.*://')
 torchrun --standalone --nproc_per_node="$NGPU" main.py \
-    --model-type flow --work-dir "$work_dir" --config configs/flow.yaml --slurm-mode
+    --work-dir "$work_dir" --config configs/flow.yaml --slurm-mode

@@ -12,7 +12,7 @@ DATASET_SUBSETS  :
   - "numina-cot-100k"
   - "openhermes-100k"
   - "smol-magpie-ultra"
-MAX_TRAIN_SAMPLES: 20000
+MAX_TRAIN_SAMPLES: -1
 MAX_VAL_SAMPLES: 5000
 MAX_LENGTH: 2048
 RAW_TEXT_FRACTION: 0.2
@@ -27,7 +27,7 @@ LR: 3e-4
 # Loss = W_FLOW · MSE(predicted velocity, target velocity)  +  W_KL · KL_LOSS(teacher‖pred)
 # (both scored on the true response span). KL_LOSS is chosen at the CLI (--kl-loss);
 # this value is the default used when the flag is omitted.
-KL_LOSS: forward_kl
+KL_LOSS: skewed_reverse_kl
 W_FLOW : 1.0
 W_KL   : 1.0
 

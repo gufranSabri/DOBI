@@ -1,2 +1,6 @@
-DOBI-diff/
-DOBI-flow/
+old/
+slurm/
+work_dir/
+
+**/__pycache__/**
+.claude/

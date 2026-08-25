@@ -26,7 +26,6 @@ MODEL_MAPPING = {
     "anthropic-chat": "lm_eval.models.anthropic_llms:AnthropicChat",
     "anthropic-chat-completions": "lm_eval.models.anthropic_llms:AnthropicChat",
     "anthropic-completions": "lm_eval.models.anthropic_llms:AnthropicLM",
-    "dobi-diffusion": "lm_eval.models.dobi:DiffusionLM",
     "dobi-flow": "lm_eval.models.dobi:FlowLM",
     "dummy": "lm_eval.models.dummy:DummyLM",
     "ggml": "lm_eval.models.gguf:GGUFLM",

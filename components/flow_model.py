@@ -1,18 +1,14 @@
 """FlowModel — continuous flow-matching distiller.
 
 A frozen student LM produces a final hidden state, projected up into the teacher's
-hidden-dim space. A FlowNet (DiT-style transformer) learns the velocity field of a
-straight-line path between the (projected) student hidden state and the teacher's
-hidden state; walking that field approximates the teacher's residual without ever
-running the teacher at inference time. Logits are read out through the teacher's own
-(frozen, copied) lm_head applied to the combined (student + predicted residual) hidden.
-
-Compared with the discrete DiffusionModel:
-  * The diffusion variable is a CONTINUOUS hidden-state vector, not token ids.
-  * Readout is the teacher's frozen lm_head on a continuous vector, not a tied
-    embedding matmul.
-  * At inference the model integrates an ODE (K Euler steps) rather than iteratively
-    unmasking a discrete canvas.
+hidden-dim space (x0). A FlowNet (DiT-style transformer) learns the velocity field of
+the straight-line path from x0 to the teacher's own hidden state (x1); walking that
+field at inference carries the student's hidden state to an estimate of the teacher's,
+without ever running the teacher. Logits are read out through the teacher's own
+(frozen, copied) lm_head applied DIRECTLY to that estimated hidden state — there is no
+separate "combined" step in either training or inference: the flownet's running state
+IS the hidden state, from x0 all the way to the (estimated) x1. At inference the model
+integrates an ODE (K Euler steps) to walk from x0 to the estimated x1.
 """
 
 from copy import deepcopy
@@ -140,7 +136,6 @@ class FlowModel(PreTrainedModel, GenerationMixin):
         attention_mask: Optional[torch.Tensor] = None,
         past_key_values=None,
         teacher_embeddings: Optional[torch.Tensor] = None,
-        cont_spans=None,   # accepted for interface parity with DiffusionModel; unused
         return_dict: bool = True,
         **kwargs,
     ):
@@ -163,10 +158,13 @@ class FlowModel(PreTrainedModel, GenerationMixin):
             t_int = (t * 1000).long()
             t_expand = t.view(B, 1, 1).expand(B, T, 1)
 
+            # Straight-line path FROM the student's hidden state TO the teacher's own
+            # hidden state (not a residual) — x0 is where the flow starts, x1 is where
+            # it should end up.
             x0 = h_student
-            x1 = teacher_embeddings - h_student
+            x1 = teacher_embeddings
 
-            xt = t_expand * x1 + (1 - t_expand) * x0
+            xt = (1 - t_expand) * x0 + t_expand * x1
             target_velocity = x1 - x0
             predicted_velocity = self.flownet(xt, t_int, attention_mask, context=h_student)
 
@@ -177,18 +175,24 @@ class FlowModel(PreTrainedModel, GenerationMixin):
             else:
                 fm_loss = fm_loss_raw.mean()
 
-            combined = h_student + x1
-            logits = self.head(combined)
+            # Logits reflect the flownet's OWN prediction, never the ground-truth
+            # teacher hidden state: one Euler step from x0 along the predicted
+            # velocity, evaluated at the same sampled t used for the loss above —
+            # consistent with the multi-step estimate produced at inference below.
+            predicted_hidden = x0 + t_expand * predicted_velocity
+            logits = self.head(predicted_hidden)
 
             return CausalLMOutputWithPast(
                 loss=fm_loss,
                 logits=logits,
                 past_key_values=outputs.past_key_values,
-                hidden_states=combined,
+                hidden_states=predicted_hidden,
             )
 
         else:
             B, T, _ = h_student.shape
+            # The flownet's running state IS the hidden state: start at the student's
+            # (x0) and integrate the ODE forward to an estimate of the teacher's (x1).
             xt = h_student
             dt = 1.0 / self.num_steps
 
@@ -199,12 +203,11 @@ class FlowModel(PreTrainedModel, GenerationMixin):
                 v = self.flownet(xt, t_int, attention_mask, context=h_student)
                 xt = xt + v * dt
 
-            combined = h_student + xt
-            logits = self.head(combined)
+            logits = self.head(xt)
 
             return CausalLMOutputWithPast(
                 loss=None,
                 logits=logits,
                 past_key_values=outputs.past_key_values,
-                hidden_states=combined,
+                hidden_states=xt,
             )

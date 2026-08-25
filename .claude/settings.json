@@ -40,7 +40,14 @@
       "Bash(rmdir work_dir)",
       "Bash(rm -f /tmp/dobitest -r)",
       "Read(//home/ahmedubc/projects/aip-lsigal/ahmedubc/DOBI/**)",
-      "Read(//project/6101771/ahmedubc/DOBI/**)"
+      "Read(//project/6101771/ahmedubc/DOBI/**)",
+      "Bash(python3 -m py_compile benchmark.py)",
+      "Read(//home/ahmedubc/projects/aip-lsigal/ahmedubc/DOBI/work_dir/base/Q2.5-1.5B_humaneval_f5/benchmark/**)",
+      "Read(//project/6101771/ahmedubc/DOBI/work_dir/base/Q2.5-1.5B_humaneval_f5/benchmark/**)",
+      "Bash(echo \"exit: $?\")",
+      "Read(//home/ahmedubc/projects/aip-lsigal/ahmedubc/DOBI/work_dir/base/Q2.5-1.5B_humaneval/**)",
+      "Bash(python3 -m py_compile main.py components/trainers.py)",
+      "Bash(python3 -m py_compile components/flow_model.py)"
     ],
     "additionalDirectories": [
       "/home/ahmedubc/projects/aip-lsigal/ahmedubc/DOBI/components",

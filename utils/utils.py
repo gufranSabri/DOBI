@@ -26,10 +26,9 @@ def save_hf_model(model, save_dir, base_model_name):
     save_path = Path(save_dir)
     save_path.mkdir(parents=True, exist_ok=True)
 
-    # Persist only the trained tensors (the UNet + probe, selected by trainability). The
-    # tied output head is the FROZEN student embedding — not trainable, not saved; it is
-    # reloaded from the base model. There are no normalization buffers to keep (discrete
-    # mask diffusion has no continuous coordinate system).
+    # Persist only the trained tensors (the FlowNet + projector, selected by
+    # trainability). The teacher lm_head readout is FROZEN — not trainable, not saved;
+    # it is reloaded from the teacher model.
     trainable_names = {
         name for name, param in model.named_parameters() if param.requires_grad
     }
@@ -41,12 +40,12 @@ def save_hf_model(model, save_dir, base_model_name):
     )
     save_file(trainable_state, save_path / "model.safetensors")
 
-    # model.config is already a DiffusionConfig (model_type = "diffusion_excitation");
-    # save it as-is. The reload path (load_excitation_model) reconstructs DiffusionModel
-    # from this config alone and re-derives the base Qwen model from config.base_model,
-    # so no fields from the base model's own config need to be merged in here. (A prior
-    # version merged onto a cloned Qwen2Config, whose class-level model_type = "qwen2"
-    # silently overrode any instance-level override at save_pretrained/to_dict time.)
+    # model.config is already a FlowConfig (model_type = "flow_excitation"); save it
+    # as-is. The reload path reconstructs FlowModel from this config alone and
+    # re-derives the base Qwen model from config.base_model, so no fields from the
+    # base model's own config need to be merged in here. (A prior version merged onto
+    # a cloned Qwen2Config, whose class-level model_type = "qwen2" silently overrode
+    # any instance-level override at save_pretrained/to_dict time.)
     model.config.save_pretrained(save_path)
 
     tokenizer = AutoTokenizer.from_pretrained(base_model_name)

@@ -19,18 +19,20 @@ pip install --no-index --upgrade pip
 
 # SUBMIT THIS FROM THE REPO ROOT.
 # Usage:
-#   sbatch benchmark.slurm hf       Qwen/Qwen2.5-1.5B-Instruct    [extra flags]
-#   sbatch benchmark.slurm diffusion ./work_dir/<run>/diffusion_best [extra flags]
-#   sbatch benchmark.slurm flow      ./work_dir/<run>/flow_best      [extra flags]
+#   sbatch benchmark.slurm hf   Qwen/Qwen2.5-1.5B-Instruct    [extra flags]
+#   sbatch benchmark.slurm flow ./work_dir/<run>/flow_best    [extra flags]
 bash ./scripts/install.sh
 
 export PYTHONDONTWRITEBYTECODE=1
 export HF_HUB_DISABLE_XET=1
 
-MODEL_TYPE="${1:?usage: sbatch benchmark.slurm <hf|diffusion|flow> <model-or-checkpoint-path> [extra flags]}"
-MODEL_PATH="${2:?usage: sbatch benchmark.slurm <hf|diffusion|flow> <model-or-checkpoint-path> [extra flags]}"
+MODEL_TYPE="${1:?usage: sbatch benchmark.slurm <hf|flow> <model-or-checkpoint-path> [extra flags]}"
+MODEL_PATH="${2:?usage: sbatch benchmark.slurm <hf|flow> <model-or-checkpoint-path> [extra flags]}"
 shift 2
 
 python benchmark.py \
     --model-type "$MODEL_TYPE" --model "$MODEL_PATH" \
     --work-dir "./work_dir/benchmark_${MODEL_TYPE}_$(date +%d_%H_%M_%S)" "$@"
+
+
+# python benchmark.py --model-type flow --work-dir ~/scratch/DOBI_flow/flow_best

@@ -8,29 +8,12 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments
 from transformers.trainer_utils import get_last_checkpoint
 
 from components import (
-    DiffusionModel, DiffusionConfig, DiffusionTrainer,
     FlowModel, FlowConfig, FlowTrainer,
     KL_LOSSES,
 )
 from utils.logger import Logger
 from utils.utils import set_rng_state
 from utils.data import build_datasets
-
-
-def load_diffusion_model(args):
-    config = DiffusionConfig(
-        base_model=args.SMALL_MODEL_ID,
-        teacher_model=args.LARGE_MODEL_ID,
-        d_model=getattr(args, "D_MODEL", 768),
-        unet_lengths=getattr(args, "UNET_LENGTHS", [2048, 1024, 512]),
-        unet_channels=getattr(args, "UNET_CHANNELS", [768, 1152, 1536]),
-        n_heads=getattr(args, "N_HEADS", 12),
-        num_sampling_steps=getattr(args, "NUM_SAMPLING_STEPS", 10),
-        mask_schedule=getattr(args, "MASK_SCHEDULE", "cosine"),
-        tie_output_head=getattr(args, "TIE_OUTPUT_HEAD", True),
-        max_seq_len=getattr(args, "MAX_LENGTH", 2048),
-    )
-    return DiffusionModel(config)
 
 
 def load_flow_model(args, teacher):
@@ -71,12 +54,7 @@ def prep_model_comps(args):
     args.logger(f"  Teacher hidden dim: {teacher.config.hidden_size}")
 
     args.logger(f"Loading student ({args.MODEL_TYPE}): {args.SMALL_MODEL_ID} …")
-    if args.MODEL_TYPE == "diffusion":
-        student = load_diffusion_model(args)
-    elif args.MODEL_TYPE == "flow":
-        student = load_flow_model(args, teacher)
-    else:
-        raise ValueError(f"Unknown MODEL_TYPE '{args.MODEL_TYPE}' (expected 'diffusion' or 'flow').")
+    student = load_flow_model(args, teacher)
     student = student.to(args.device)
 
     trainable = sum(p.numel() for p in student.parameters() if p.requires_grad)
@@ -100,9 +78,6 @@ def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator):
             args.logger(f"  {k} : {v.numel():,} params")
     args.logger("\n")
 
-    metric_for_best = "top1_agreement" if args.MODEL_TYPE == "diffusion" else "ce"
-    greater_is_better = args.MODEL_TYPE == "diffusion"
-
     training_args = TrainingArguments(
         output_dir=args.work_dir,
 
@@ -125,8 +100,10 @@ def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator):
         save_total_limit=2,
 
         load_best_model_at_end=False,
-        metric_for_best_model=metric_for_best,
-        greater_is_better=greater_is_better,
+        # Checkpointing criterion: top1 agreement with the teacher's predicted tokens
+        # on the response span (higher is better).
+        metric_for_best_model="top1_agreement",
+        greater_is_better=True,
 
         fp16=str(args.device).startswith("cuda"),
         bf16=False,
@@ -139,8 +116,7 @@ def prep_trainer(args, teacher, student, train_ds, val_ds, data_collator):
         log_level="error" if args.slurm_mode else "info",
     )
 
-    trainer_cls = DiffusionTrainer if args.MODEL_TYPE == "diffusion" else FlowTrainer
-    trainer = trainer_cls(
+    trainer = FlowTrainer(
         arg=args,
         teacher_model=teacher,
         model=student,
@@ -187,23 +163,15 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-type", dest="MODEL_TYPE", choices=["diffusion", "flow"], required=True,
-                        help="Which distillation approach to train: discrete mask-token diffusion or continuous flow matching.")
-    parser.add_argument("--work-dir", default=None,
-                        help="Default: ./work_dir/<model-type>_test")
-    parser.add_argument("--config", default=None,
-                        help="Default: configs/<model-type>.yaml")
+    parser.add_argument("--work-dir", default="./work_dir/flow_test")
+    parser.add_argument("--config", default="configs/flow.yaml")
     parser.add_argument("--kl-loss", dest="KL_LOSS", default=None, choices=sorted(KL_LOSSES),
                         help="KL variant used as the second loss term. Overrides KL_LOSS in the config file.")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--slurm-mode", action="store_true")
 
     args = parser.parse_args()
-
-    if args.config is None:
-        args.config = f"configs/{args.MODEL_TYPE}.yaml"
-    if args.work_dir is None:
-        args.work_dir = f"./work_dir/{args.MODEL_TYPE}_test"
+    args.MODEL_TYPE = "flow"
 
     with open(args.config, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
